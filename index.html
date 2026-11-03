@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NITE CREW — Discover. Connect. Go Out. | Mumbai</title>
+    <meta name="description" content="NITE CREW is Mumbai's social discovery community for going out. Event-first discovery, 4–6 person squads, and verified mutual-consent partnerships.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body class="dark-theme">
+
+    <div class="bg-pattern-layer"></div>
+    <div class="bg-glow-orb orb-purple"></div>
+    <div class="bg-glow-orb orb-lime"></div>
+    <div class="bg-glow-orb orb-purple"></div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="app-nav" id="appNav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span style="color: var(--neon-lime);">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="events.html" class="nav-link ">Events & Venues</a>
+                <a href="squads.html" class="nav-link ">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link ">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link ">Coordination Chat</a>
+                <a href="pass.html" class="nav-link ">Active Pass</a>
+            </nav>
+
+            <div class="nav-right" style="display: flex; align-items: center; gap: 10px;">
+                <div class="ambient-audio-pill" id="ambientAudioPill" onclick="toggleLandingAudio()" title="Mumbai Club Beat Ambient Audio Preview">
+                    <span class="audio-wave-bars" id="audioWaveBars">
+                        <span class="bar bar1"></span>
+                        <span class="bar bar2"></span>
+                        <span class="bar bar3"></span>
+                    </span>
+                    <span id="audioPillLabel" style="font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; color: var(--neon-lime);">Rave Beat (0:22)</span>
+                </div>
+                <a href="squads.html" class="btn-pixel-primary">
+                    <span>⚡ Browse Squads</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="mainContainer">
+        <!-- HERO SECTION -->
+        <section class="hero-brutal">
+            <div class="hero-backdrop" style="background-image: url('assets/hero-bg.jpg');"></div>
+            <div class="hero-overlay"></div>
+            
+            <div class="container hero-container">
+                <div class="hero-left-col">
+                    <div class="hero-sticker-row">
+                        <span class="pixel-tag tag-neon-lime">MUMBAI SOCIAL DISCOVERY</span>
+                        <span class="pixel-tag tag-neon-purple">EVENT-FIRST SQUADS & 1v1</span>
+                        <span class="live-status-pill">
+                            <span class="pulse-green"></span> 20+ Curated Mumbai Experiences
+                        </span>
+                    </div>
+
+                    <h1 class="hero-brutal-title">
+                        YOUR CITY IS BETTER<br>
+                        WITH YOUR PEOPLE.<br>
+                        <span class="highlight-lime">FIND YOUR CREW.</span><br>
+                        <span class="highlight-lime">OWN YOUR NIGHT.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Discover experiences. Meet people who share your music and vibe. Build your crew and experience Mumbai together. 
+                        Form balanced 4–6 person squads or connect through verified mutual-consent entry partnerships.
+                    </p>
+
+                    <div class="hero-cta-bar">
+                        <a href="squads.html" class="btn-neo-huge btn-lime">
+                            <span>EXPLORE SQUADS (4–6)</span>
+                            <span>👥</span>
+                        </a>
+                        <a href="pairmatch.html" class="btn-neo-huge btn-ghost-white">
+                            <span>1V1 PAIRMATCH</span>
+                            <span>⚡</span>
+                        </a>
+                        <a href="events.html" class="btn-neo-huge btn-ghost-white">
+                            <span>DISCOVER VENUES</span>
+                            <span>🍸</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-metrics-strip">
+                        <div class="metric-cell">
+                            <strong>4–6</strong>
+                            <span>Squad Size for Zero Awkwardness</span>
+                        </div>
+                        <div class="metric-separator">/</div>
+                        <div class="metric-cell">
+                            <strong>100%</strong>
+                            <span>Mutual Consent on Every Match</span>
+                        </div>
+                        <div class="metric-separator">/</div>
+                        <div class="metric-cell">
+                            <strong>18+</strong>
+                            <span>Age-Verified Member Community</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Mobile Hovering Animation Mockup -->
+                <div class="hero-right-col">
+                    <div class="hero-visual">
+                        <div class="pixel-burst burst-a">✳</div>
+                        <div class="pixel-burst burst-b">✦</div>
+                        
+                        <div class="poster-sticker sticker-top">
+                            NO<br>AWKWARD<br>INTRO.
+                        </div>
+                        
+                        <div class="phone-shell">
+                            <div class="phone-island"></div>
+                            <div class="phone-screen">
+                                <div class="phone-status">
+                                    <span>9:41</span>
+                                    <span>● ● ▰</span>
+                                </div>
+                                <div class="phone-brand"><img src="assets/logo-icon.png" alt="NC" style="width: 18px; height: 18px; border-radius: 4px; vertical-align: middle; margin-right: 5px;">NITE<span>CREW</span><b>☰</b></div>
+                                <div class="phone-kicker">YOUR NIGHT STARTS HERE</div>
+                                <div class="phone-title">Find your<br><em>night person.</em></div>
+                                <div class="mini-event">
+                                    <div class="mini-event-art">
+                                        <span class="pixel-sun">✳</span>
+                                        <small>TONIGHT / MUMBAI</small>
+                                    </div>
+                                    <div class="mini-event-info">
+                                        <b>1:1 ENTRY PARTNER</b>
+                                        <span>Verified profiles only</span>
+                                    </div>
+                                </div>
+                                <div class="phone-label">YOUR VIBE</div>
+                                <div class="vibe-pills">
+                                    <span>HOUSE</span>
+                                    <span>HIP-HOP</span>
+                                    <span>COMMERCIAL</span>
+                                </div>
+                                <a href="squads.html" class="phone-cta" style="text-decoration:none; display:block;">
+                                    FIND MY CREW&nbsp; ↗
+                                </a>
+                                <div class="phone-nav">
+                                    <span>⌂</span>
+                                    <span>◉</span>
+                                    <span>▤</span>
+                                    <span>◎</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="poster-sticker sticker-bottom">
+                            1 NIGHT<br>2 PEOPLE<br>GOOD ENERGY
+                        </div>
+                        
+                        <div class="price-chip">
+                            <small>THE PLAN</small>
+                            <strong>YOU + 1</strong>
+                            <span>NOT A PROMISE OF ENTRY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMERCIAL TRANSPARENCY & SMART NIGHT-OUT FRAMEWORK -->
+        <section class="section-pad" style="padding-top: 20px; padding-bottom: 40px;">
+            <div class="container">
+                <div style="background: linear-gradient(180deg, rgba(22, 24, 35, 0.95) 0%, rgba(14, 15, 22, 0.95) 100%); border: 1px solid rgba(204, 255, 0, 0.2); border-radius: 28px; padding: 36px 32px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(204,255,0,0.12) 0%, transparent 70%); pointer-events: none;"></div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; max-width: 780px; margin-bottom: 30px;">
+                        <span class="section-super" style="color: var(--neon-lime);">SMART NIGHT-OUT ECONOMICS & SAFETY PROTOCOL</span>
+                        <h2 class="section-main-title" style="font-size: 32px; margin-top: 6px; line-height: 1.15;">
+                            A Better Night Out. <span class="highlight-lime">With Clearer Choices.</span>
+                        </h2>
+                        <p style="color: var(--text-silver); font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                            Going out in Mumbai shouldn't mean ₹3,000 stag barriers, confusing door rules, or awkward guesswork. NITE CREW connects verified night-out companions and balanced 4–6 member squads, unlocking transparent upfront pricing, platform-sponsored perks, and 100% supervised gate meetups.
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+                        <!-- Card 1: Eligible Entry -->
+                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 22px 20px; transition: border-color 0.2s;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">⚡</div>
+                            <h4 style="font-family: var(--font-heading); font-size: 16px; color: #fff; margin-bottom: 6px;">
+                                ₹999 Eligible Entry Offer
+                            </h4>
+                            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.55;">
+                                Save ~60% compared to standard ₹2,500–₹3,000 stag cover charges by pairing with a verified companion at confirmed participating venues.
+                            </p>
+                            <span style="display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 10px; color: var(--neon-lime); font-weight: 700;">
+                                SAVE UP TO ₹2,000 PER NIGHT
+                            </span>
+                        </div>
+
+                        <!-- Card 2: Promotional Rewards -->
+                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 20px; padding: 22px 20px; transition: border-color 0.2s;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🍸</div>
+                            <h4 style="font-family: var(--font-heading); font-size: 16px; color: #fff; margin-bottom: 6px;">
+                                Up to ₹800 F&B Credits
+                            </h4>
+                            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.55;">
+                                Eligible verified members at selected events receive food & beverage promotional credits sponsored directly by NITE CREW and venue partners.
+                            </p>
+                            <span style="display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 10px; color: #a78bfa; font-weight: 700;">
+                                PLATFORM-SPONSORED PERK
+                            </span>
+                        </div>
+
+                        <!-- Card 3: Gate Security -->
+                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 22px 20px; transition: border-color 0.2s;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🛡️</div>
+                            <h4 style="font-family: var(--font-heading); font-size: 16px; color: #fff; margin-bottom: 6px;">
+                                Supervised Gate Meetups
+                            </h4>
+                            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.55;">
+                                Zero confusing side streets or external cafes. Every single squad and pair meetup is strictly at the club's Main Entrance Gate with bouncers and CCTV.
+                            </p>
+                            <span style="display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 10px; color: #38bdf8; font-weight: 700;">
+                                100% VENUE PHYSICAL SAFETY
+                            </span>
+                        </div>
+
+                        <!-- Card 4: Post-Entry Autonomy -->
+                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(204, 255, 0, 0.15); border-radius: 20px; padding: 22px 20px; transition: border-color 0.2s;">
+                            <div style="font-size: 24px; margin-bottom: 10px;">🗽</div>
+                            <h4 style="font-family: var(--font-heading); font-size: 16px; color: #fff; margin-bottom: 6px;">
+                                "Your Night. Your Choice."
+                            </h4>
+                            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.55;">
+                                Complete autonomy after entry. Party together, merge with the squad, or part ways inside with zero social, romantic, or financial obligation.
+                            </p>
+                            <span style="display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 10px; color: var(--neon-lime); font-weight: 700;">
+                                ZERO POST-ENTRY STRINGS
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTIONS OVERVIEW GRID (Highlights of the 4 standalone web apps) -->
+        <section class="section-pad">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="section-super">EXPERIENCE NITE CREW</div>
+                    <h2 class="section-main-title">DEDICATED <span class="highlight-lime">PRODUCT PLATFORMS</span></h2>
+                    <p class="section-subtitle">Each part of your nightlife experience has its own dedicated space designed for effortless discovery and safety.</p>
+                </div>
+
+                <div class="product-portal-grid">
+                    <div class="portal-card">
+                        <span class="portal-badge tag-lime">01 / GROUPS</span>
+                        <h3>SquadMatch (4–6)</h3>
+                        <p>Event-first groups formed around confirmed events using the Least-Misery model for maximum group compatibility.</p>
+                        <a href="squads.html" class="btn-portal">Browse Active Squads →</a>
+                    </div>
+                    <div class="portal-card">
+                        <span class="portal-badge tag-pink">02 / 1V1 COMPANIONS</span>
+                        <h3>Mutual PairMatch</h3>
+                        <p>Verified 1v1 entry companion introductions with strict mutual opt-in and unilateral female review authority.</p>
+                        <a href="pairmatch.html" class="btn-portal">Launch PairMatch Arena →</a>
+                    </div>
+                    <div class="portal-card">
+                        <span class="portal-badge tag-purple">03 / IN-APP CHAT</span>
+                        <h3>Coordination Hub</h3>
+                        <p>Masked group channels and companion chats. Zero phone numbers or social media exchanged.</p>
+                        <a href="chat.html" class="btn-portal">Open Squad Chat Hub →</a>
+                    </div>
+                    <div class="portal-card">
+                        <span class="portal-badge tag-lime">04 / DISCOVERY</span>
+                        <h3>Mumbai Venues</h3>
+                        <p>Curated guide across Bandra, Lower Parel, Juhu, and Andheri with genuine dress codes and music vibes.</p>
+                        <a href="events.html" class="btn-portal">Explore 20+ Venues →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED 4-6 SQUAD FORMATION SHOWCASE (Image 2 Match) -->
+        <section class="section-pad" style="padding-top: 0;">
+            <div class="container">
+                <div class="squad-hero-showcase">
+                    <div class="squad-hero-content">
+                        <span class="pixel-tag tag-neon-lime">EVENT-FIRST GROUP DISCOVERY</span>
+                        <h2 class="squad-hero-title">
+                            The 4–6 Member Squad Matrix<br>
+                            <span class="highlight-lime">Balanced Vibes.</span><br>
+                            <span class="highlight-lime">Zero Awkwardness.</span>
+                        </h2>
+                        <p class="squad-hero-desc">
+                            Rather than going out solo or dealing with unpredictable stag door gatekeeping, NITE CREW groups 4–6 verified members around confirmed Mumbai events. 
+                            The Least-Misery Model ensures music sync, budget alignment, and public landmark arrivals.
+                        </p>
+                        <div class="squad-hero-stats">
+                            <div class="sh-stat">
+                                <strong>4–6</strong>
+                                <span>Optimal Squad Size</span>
+                            </div>
+                            <div class="sh-stat">
+                                <strong style="color: var(--neon-lime);">100%</strong>
+                                <span>Mutual Consent</span>
+                            </div>
+                            <div class="sh-stat">
+                                <strong style="color: #A78BFA;">88%+</strong>
+                                <span>Energy Synergy</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="squads.html" class="btn-neo-huge btn-lime" style="text-decoration: none;">
+                                <span>EXPLORE LIVE SQUADS (4–6)</span>
+                                <span>👥</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- THE SQUIRCLE HONEYCOMB MATRIX ANIMATION -->
+                    <div class="squad-matrix-stage">
+                        <div class="matrix-cluster-wrap">
+                            <div class="matrix-tooltip tooltip-left">
+                                <span>Host & Organizer 👑</span>
+                            </div>
+                            <div class="matrix-tooltip tooltip-right">
+                                <span>Music Lead 🎵</span>
+                            </div>
+
+                            <div class="matrix-grid-rows">
+                                <div class="matrix-row">
+                                    <div class="squircle-tile tile-ghost"></div>
+                                    <a href="squads.html" class="squircle-tile tile-member active-lime">
+                                        <div class="speaking-wave-ring"></div>
+                                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80" alt="Aarav K.">
+                                    </a>
+                                    <a href="squads.html" class="squircle-tile tile-member active-lime">
+                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Zoya M.">
+                                    </a>
+                                    <div class="squircle-tile tile-ghost"></div>
+                                </div>
+
+                                <div class="matrix-row">
+                                    <a href="squads.html" class="squircle-tile tile-member">
+                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Dev S.">
+                                    </a>
+                                    <div class="squircle-tile tile-center-hub">
+                                        <div class="hub-logo-mark">
+                                            <span>N</span>
+                                            <span class="hub-sub-text">SQUAD</span>
+                                        </div>
+                                    </div>
+                                    <a href="squads.html" class="squircle-tile tile-member active-lime">
+                                        <div class="speaking-wave-ring" style="animation-delay: 0.6s;"></div>
+                                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Meera D.">
+                                    </a>
+                                </div>
+
+                                <div class="matrix-row">
+                                    <div class="squircle-tile tile-ghost"></div>
+                                    <a href="squads.html" class="squircle-tile tile-open-slot">
+                                        <span class="plus-icon">+</span>
+                                        <small>OPEN SPOT</small>
+                                    </a>
+                                    <a href="squads.html" class="squircle-tile tile-open-slot" style="animation-delay: 1.5s;">
+                                        <span class="plus-icon">+</span>
+                                        <small>OPEN SPOT</small>
+                                    </a>
+                                    <div class="squircle-tile tile-ghost"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE PLAYBOOK: FOUR STEPS -->
+        <section class="how section-pad" id="how">
+            <div class="container">
+                <div class="section-top">
+                    <span class="section-index">02 / THE PLAYBOOK</span>
+                    <span class="section-caption">FOUR STEPS. ONE NIGHT.</span>
+                </div>
+                <div class="section-heading-row">
+                    <h2>GET READY.<br>GET PAIRED.<br><span class="lime">GET OUT.</span></h2>
+                    <p>A simple flow built around verified adults and a shared plan. You stay in control at every step.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-top"><span>STEP 01</span><span class="step-arrow">↗</span></div>
+                        <div class="step-graphic id-graphic">
+                            <div class="id-card">
+                                <b>N C</b>
+                                <span>VERIFIED MEMBER</span>
+                                <strong>✓</strong>
+                            </div>
+                        </div>
+                        <h3>1. CHOOSE AN EVENT</h3>
+                        <p>Pick a confirmed event or venue in Mumbai that matches your music taste, vibe, and budget.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-top"><span>STEP 02</span><span class="step-arrow">↗</span></div>
+                        <div class="step-graphic calendar-graphic">
+                            <div class="calendar">
+                                <small>VIBE & SOUND</small>
+                                <strong>PREFERENCES</strong>
+                                <div>✳ &nbsp; COMPATIBILITY</div>
+                            </div>
+                        </div>
+                        <h3>2. SET PREFERENCES</h3>
+                        <p>Indicate your arrival window, music preferences, and whether you prefer a 4–6 squad or mutual 1:1.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-top"><span>STEP 03</span><span class="step-arrow">↗</span></div>
+                        <div class="step-graphic pair-graphic">
+                            <div class="avatar a">YOU</div>
+                            <div class="pair-plus">+</div>
+                            <div class="avatar b">CREW</div>
+                        </div>
+                        <h3>3. DISCOVER & OPT IN</h3>
+                        <p>Review compatible members and squads. Mutual opt-in is strictly required before any chat unlocks.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-top"><span>STEP 04</span><span class="step-arrow">↗</span></div>
+                        <div class="step-graphic walk-graphic">
+                            <div class="walk-arrow">↗</div>
+                            <div class="walk-text">MEET<br>IN PUBLIC</div>
+                        </div>
+                        <h3>4. MEET IN PUBLIC</h3>
+                        <p>Meet at designated well-lit public landmarks (hotel lobby, valet desk) before heading in. Venue door policy applies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST & SAFETY SECTION -->
+        <section class="section-safety section-pad" id="safety-rules">
+            <div class="container">
+                <div class="safety-feature-card">
+                    <div class="safety-text-col">
+                        <span class="pixel-tag tag-neon-purple">COMMUNITY & SAFETY FIRST</span>
+                        <h2 class="safety-card-title">Engineered For Respect, Consent & Peace of Mind</h2>
+                        <p class="safety-card-desc">
+                            Urban nightlife is incredible when you are with the right people. NITE CREW replaces awkward DMs and door anxiety with transparent, consent-led safety protocols:
+                        </p>
+                        <ul class="safety-checklist">
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Women-First Review Authority:</strong>
+                                    <span>In 1:1 introductions, women review profiles first. Men cannot message until mutual acceptance is granted.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Masked In-App Coordination:</strong>
+                                    <span>Coordinate meeting details in-app without ever sharing your phone number, social media, or personal info.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Designated Public Landmarks:</strong>
+                                    <span>All initial meetups happen exclusively at bright, public spots (hotel valet, cafe entrances) — never private locations.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Clear Intent & Zero Expectation:</strong>
+                                    <span>Whether you stick together all night or split once inside, expectations are aligned before you ever meet.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="safety-badge-col">
+                        <div class="safety-emblem">🛡️</div>
+                        <h3>Trust Layer</h3>
+                        <p>Zero unverified bots. Consent-led introductions. Transparent moderation.</p>
+                        <div class="safety-pills-list">
+                            <span class="pixel-tag tag-neon-lime">18+ Age Verified</span>
+                            <span class="pixel-tag tag-neon-purple">Mutual Consent Only</span>
+                            <span class="pixel-tag tag-neon-purple">No Contact Sharing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PURPLE WAITLIST SECTION -->
+        <section class="section-waitlist" id="waitlist">
+            <div class="container">
+                <div class="waitlist-box">
+                    <span class="waitlist-kicker">MUMBAI / FOUNDING CREW</span>
+                    <h2 class="waitlist-title">YOUR NEXT NIGHT<br>NEEDS A <span class="highlight-lime">PLUS ONE.</span></h2>
+                    <p class="waitlist-sub">Join the early list. We'll let you know when NITE CREW is ready to open in Mumbai.</p>
+                    
+                    <form class="waitlist-form" onsubmit="handleWaitlistForm(event)">
+                        <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your email address" required autocomplete="email">
+                        <button type="submit" class="btn-waitlist-submit">
+                            <span>GET EARLY ACCESS</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                    
+                    <p class="waitlist-disclaimer">18+ only. No payments. Admission subject to venue door discretion.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="chat.html">Coordination Chat</a>
+                    <a href="login.html">Sign In & Demo Personas</a>
+                    <a href="admin.html">Admin Operations</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI ZONES</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+
+    <!-- LANDING PAGE 22-SECOND AMBIENT RAVE BEAT (40% VOLUME, SMOOTH FADE OUT) -->
+    <audio id="landingBeatAudio" preload="auto">
+        <source src="assets/landing-beat.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let countdownTimer = null;
+        let remainingSeconds = 22;
+        let isManuallyPaused = false;
+
+        function start22sAudio() {
+            const audio = document.getElementById('landingBeatAudio');
+            const label = document.getElementById('audioPillLabel');
+            const waveBars = document.getElementById('audioWaveBars');
+            if (!audio) return;
+
+            audio.volume = 0.40;
+            audio.currentTime = 0;
+
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    updateAudioUI(true);
+                    startCountdown();
+                }).catch(() => {
+                    // Browser blocked autoplay without user gesture
+                    updateAudioUI(false);
+                    if (label) label.textContent = '▶ Play Rave Beat (22s)';
+                    const startOnInteraction = () => {
+                        document.removeEventListener('click', startOnInteraction);
+                        document.removeEventListener('touchstart', startOnInteraction);
+                        if (!isManuallyPaused) {
+                            audio.volume = 0.40;
+                            audio.play().then(() => {
+                                updateAudioUI(true);
+                                startCountdown();
+                            }).catch(e => console.log('Audio gesture start error:', e));
+                        }
+                    };
+                    document.addEventListener('click', startOnInteraction, { once: true });
+                    document.addEventListener('touchstart', startOnInteraction, { once: true });
+                });
+            }
+        }
+
+        function startCountdown() {
+            const audio = document.getElementById('landingBeatAudio');
+            const label = document.getElementById('audioPillLabel');
+            const waveBars = document.getElementById('audioWaveBars');
+            clearInterval(countdownTimer);
+            remainingSeconds = 22;
+
+            countdownTimer = setInterval(() => {
+                remainingSeconds--;
+                if (label) {
+                    const sec = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
+                    label.textContent = `Rave Beat (0:${sec})`;
+                }
+
+                // Smooth fade out in the last 3 seconds (seconds 19 to 22)
+                if (remainingSeconds <= 3 && remainingSeconds > 0 && audio) {
+                    audio.volume = Math.max(0, (remainingSeconds / 3) * 0.40);
+                }
+
+                if (remainingSeconds <= 0) {
+                    clearInterval(countdownTimer);
+                    if (audio) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                        audio.volume = 0.40;
+                    }
+                    if (waveBars) waveBars.classList.remove('playing');
+                    if (label) label.textContent = '↺ Replay Beat (22s)';
+                }
+            }, 1000);
+        }
+
+        function toggleLandingAudio() {
+            const audio = document.getElementById('landingBeatAudio');
+            const label = document.getElementById('audioPillLabel');
+            if (!audio) return;
+
+            if (!audio.paused) {
+                audio.pause();
+                clearInterval(countdownTimer);
+                isManuallyPaused = true;
+                updateAudioUI(false);
+                const sec = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
+                if (label) label.textContent = `▶ Resume (0:${sec})`;
+            } else {
+                isManuallyPaused = false;
+                if (remainingSeconds <= 0) {
+                    remainingSeconds = 22;
+                    audio.currentTime = 0;
+                }
+                audio.volume = 0.40;
+                audio.play().then(() => {
+                    updateAudioUI(true);
+                    startCountdown();
+                }).catch(e => console.log('Toggle play error:', e));
+            }
+        }
+
+        function updateAudioUI(isPlaying) {
+            const waveBars = document.getElementById('audioWaveBars');
+            if (waveBars) {
+                if (isPlaying) waveBars.classList.add('playing');
+                else waveBars.classList.remove('playing');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            start22sAudio();
+        });
+    </script>
+</body>
+</html>

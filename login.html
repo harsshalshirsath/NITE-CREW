@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & Role-Based Access | NITE CREW Mumbai</title>
+    <meta name="description" content="Sign in to NITE CREW Mumbai. Explore through 3 sample personas: Male Member, Female Member (Women-First Review Authority), or Executive Admin Operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo" aria-label="NITE CREW Home">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span class="highlight-lime">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+                <div class="location-pill">
+                    <span class="live-dot" aria-hidden="true"></span>
+                    <span class="city-name">Mumbai · 38 Clubs Live</span>
+                </div>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events & Venues</a>
+                <a href="squads.html" class="nav-link">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link">Coordination Chat</a>
+                <a href="pass.html" class="nav-link">Active Pass</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="squads.html" class="btn-pixel-primary">
+                    <span>⚡ Browse Squads</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- LOGIN HERO & CENTRAL DEMO ACCESS HUB -->
+    <main class="login-page-wrap container">
+        <div class="login-central-card">
+            <!-- Header Text -->
+            <div class="login-header-text" style="text-align: center;">
+                <img src="assets/logo-icon.png" alt="NITE CREW Logo" style="width: 54px; height: 54px; border-radius: 14px; margin-bottom: 12px; box-shadow: 0 0 24px rgba(204, 255, 0, 0.45);">
+                <br>
+                <span class="pixel-tag tag-neon-lime" style="font-size: 9px; letter-spacing: 1.5px; margin-bottom: 8px; display: inline-block;">
+                    ROLE-BASED DEMO ACCESS
+                </span>
+                <h1>SIGN IN TO <span class="highlight-lime">NITE CREW</span></h1>
+                <p>
+                    Experience how NITE CREW functions across different real-world personas. Select one of the 3 pre-configured demo credentials below to instantly log in, or use the manual sign-in form.
+                </p>
+            </div>
+
+            <!-- 3 Persona Cards Grid -->
+            <div class="persona-cards-grid">
+                <!-- 1. Male Persona (Rohan) -->
+                <div class="persona-login-card">
+                    <div class="plc-top">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80" alt="Rohan Verma" class="plc-avatar male">
+                        <div class="plc-title-box">
+                            <h3>Rohan Verma (24)</h3>
+                            <span class="plc-role-tag male">🧔 GUY VIEW · MEMBER</span>
+                        </div>
+                    </div>
+                    <p class="plc-desc">
+                        UI Engineer in Bandra West. Requests to join 4–6 event squads, submits 1v1 pair requests to verified female candidates, and accesses his DigiLocker pass.
+                    </p>
+                    <div class="plc-creds-strip">
+                        <div>USER ID: <strong>rohan@nitecrew.in</strong></div>
+                        <div>PASSWORD: <strong>Rohan@2026</strong></div>
+                    </div>
+                    <button class="btn-plc-quick-login" onclick="quickFillAndLogin('rohan@nitecrew.in', 'Rohan@2026')">
+                        <span>ONE-CLICK SIGN IN AS ROHAN</span>
+                        <span>→</span>
+                    </button>
+                </div>
+
+                <!-- 2. Female Persona (Zoya) -->
+                <div class="persona-login-card card-female">
+                    <div class="plc-top">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Zoya Merchant" class="plc-avatar female">
+                        <div class="plc-title-box">
+                            <h3>Zoya Merchant (23)</h3>
+                            <span class="plc-role-tag female">👑 GIRL VIEW · WOMEN-FIRST</span>
+                        </div>
+                    </div>
+                    <p class="plc-desc">
+                        Architect in Lower Parel. Possesses unilateral review authority to approve or veto male applicants before any chat unlocks, with 1-tap safety beacon.
+                    </p>
+                    <div class="plc-creds-strip">
+                        <div>USER ID: <strong>zoya@nitecrew.in</strong></div>
+                        <div>PASSWORD: <strong>Zoya@2026</strong></div>
+                    </div>
+                    <button class="btn-plc-quick-login female" onclick="quickFillAndLogin('zoya@nitecrew.in', 'Zoya@2026')">
+                        <span>ONE-CLICK SIGN IN AS ZOYA</span>
+                        <span>→</span>
+                    </button>
+                </div>
+
+                <!-- 3. Admin Persona (Executive Operations) -->
+                <div class="persona-login-card card-admin">
+                    <div class="plc-top">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Executive Admin" class="plc-avatar admin">
+                        <div class="plc-title-box">
+                            <h3>Executive Admin (HQ)</h3>
+                            <span class="plc-role-tag admin">🛡️ ADMIN OPERATIONS</span>
+                        </div>
+                    </div>
+                    <p class="plc-desc">
+                        Platform operations lead. Access 38-club live performance analytics, crowd synergy heatmaps, add new venues dynamically, and oversee safety moderation.
+                    </p>
+                    <div class="plc-creds-strip">
+                        <div>USER ID: <strong>admin@nitecrew.in</strong></div>
+                        <div>PASSWORD: <strong>NiteCrewAdmin#2026</strong></div>
+                    </div>
+                    <button class="btn-plc-quick-login admin" onclick="quickFillAndLogin('admin@nitecrew.in', 'NiteCrewAdmin#2026')">
+                        <span>ONE-CLICK SIGN IN AS ADMIN</span>
+                        <span>⚙️</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Manual Sign In Form -->
+            <div class="manual-login-box">
+                <h4>OR SIGN IN WITH USER ID & PASSWORD</h4>
+                <form id="manualLoginForm" onsubmit="handleManualLogin(event)">
+                    <div class="login-form-group">
+                        <label for="loginEmail">USER ID / REGISTERED EMAIL</label>
+                        <input type="email" id="loginEmail" class="login-native-input" placeholder="e.g. rohan@nitecrew.in or admin@nitecrew.in" required>
+                    </div>
+
+                    <div class="login-form-group">
+                        <label for="loginPassword">PASSWORD</label>
+                        <input type="password" id="loginPassword" class="login-native-input" placeholder="Enter password..." required>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 12px; color: #94a3b8;">
+                        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                            <input type="checkbox" id="rememberMe" checked style="accent-color: var(--neon-lime);">
+                            <span>Remember demo session</span>
+                        </label>
+                        <span style="color: var(--neon-lime); cursor: pointer;" onclick="showToast('Copy credentials from any card above to test!')">Need sample credentials?</span>
+                    </div>
+
+                    <button type="submit" class="btn-login-submit" id="loginSubmitBtn">
+                        SIGN IN TO NITE CREW →
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues (38)</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="admin.html">Admin Operations</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI DISTRICTS</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        function quickFillAndLogin(email, pass) {
+            document.getElementById('loginEmail').value = email;
+            document.getElementById('loginPassword').value = pass;
+            
+            showToast(`Authenticating as ${email}...`);
+            const res = login(email, pass);
+            if (res.success) {
+                showToast(`✓ Welcome, ${res.account.name}! Redirecting to ${res.account.roleLabel}...`);
+                setTimeout(() => {
+                    window.location.href = res.account.redirectUrl;
+                }, 600);
+            }
+        }
+
+        function handleManualLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPassword').value.trim();
+
+            const res = login(email, pass);
+            if (res.success) {
+                showToast(`✓ Welcome back, ${res.account.name}! Redirecting...`);
+                setTimeout(() => {
+                    window.location.href = res.account.redirectUrl;
+                }, 600);
+            } else {
+                showToast(res.message || "Invalid credentials. Please use sample credentials.");
+            }
+        }
+    </script>
+</body>
+</html>

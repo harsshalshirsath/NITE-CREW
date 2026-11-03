@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Squads (4–6) | NITE CREW Mumbai</title>
+    <meta name="description" content="Balanced groups of 4–6 formed around confirmed Mumbai nightlife events. Least-Misery compatibility matching.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body class="dark-theme">
+
+    <div class="bg-pattern-layer"></div>
+    <div class="bg-glow-orb orb-purple"></div>
+    <div class="bg-glow-orb orb-lime"></div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="app-nav" id="appNav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span style="color: var(--neon-lime);">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events & Venues</a>
+                <a href="squads.html" class="nav-link active">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link">Coordination Chat</a>
+                <a href="pass.html" class="nav-link">Active Pass</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="pairmatch.html" class="btn-pixel-primary">
+                    <span>⚡ 1v1 PairMatch</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container container">
+        <!-- HERO SQUAD SHOWCASE: ANIMATED MATRIX (Image 2 Match) -->
+        <section class="squad-hero-showcase">
+            <div class="squad-hero-content">
+                <span class="pixel-tag tag-neon-lime">LEAST-MISERY AGGREGATION MODEL</span>
+                <h1 class="squad-hero-title">
+                    Event-First Squads (4–6)<br>
+                    <span class="highlight-lime">Zero Awkwardness.</span><br>
+                    <span style="color: #A78BFA;">Pure Energy.</span>
+                </h1>
+                <p class="squad-hero-desc">
+                    Balanced groups of 4–6 formed around confirmed Mumbai nights. Minimized social friction across music preferences, budget, and arrival timing. Tap any metric or role below to filter.
+                </p>
+
+                <!-- Interactive Clickable Hero Metrics (Give Choices & Segregation) -->
+                <div class="squad-hero-stats">
+                    <div class="sh-stat clickable" id="statGroupSize" onclick="cycleGroupSizeFilter()" title="Click to filter by group size">
+                        <strong id="statGroupSizeVal">4–6</strong>
+                        <span>Group Size Limit ▾</span>
+                    </div>
+                    <div class="sh-stat clickable" id="statConsent" onclick="toggleConsentFilter()" title="Click to filter 👑 NITE GIRLS circles">
+                        <strong style="color: var(--neon-lime);">100%</strong>
+                        <span>Mutual Consent 🛡️</span>
+                    </div>
+                    <div class="sh-stat clickable" id="statSynergy" onclick="toggleSynergyFilter()" title="Click to filter by min synergy">
+                        <strong style="color: #A78BFA;" id="statSynergyVal">88%+</strong>
+                        <span>Min Synergy ▾</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: THE SQUIRCLE FORMATION MATRIX ANIMATION -->
+            <div class="squad-matrix-stage">
+                <div class="matrix-cluster-wrap">
+                    <!-- Floating Interactive Callout Badges -->
+                    <div class="matrix-tooltip tooltip-left" style="cursor: pointer; pointer-events: auto;" onclick="filterByRole('Host')" title="Click to filter squads by Host">
+                        <span>Host & Organizer 👑</span>
+                    </div>
+                    <div class="matrix-tooltip tooltip-right" style="cursor: pointer; pointer-events: auto;" onclick="filterByRole('Vibe')" title="Click to filter squads by Vibe Lead">
+                        <span>Vibe Lead 🎵</span>
+                    </div>
+
+                    <!-- Honeycomb Rows of Rounded Squircles -->
+                    <div class="matrix-grid-rows">
+                        <!-- Row 1 -->
+                        <div class="matrix-row">
+                            <div class="squircle-tile tile-ghost"></div>
+                            
+                            <!-- Member 1: Aarav (Host) -->
+                            <div class="squircle-tile tile-member active-lime" onclick="openSquadModal(1)" title="Aarav K. — Squad Host 👑">
+                                <div class="speaking-wave-ring"></div>
+                                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80" alt="Aarav K.">
+                                <div class="tile-popover">
+                                    <strong>Aarav K. (25)</strong>
+                                    <small>👑 Squad Host · 160 KP</small>
+                                    <span>Product Designer in Bandra. Big on melodic techno.</span>
+                                </div>
+                            </div>
+
+                            <!-- Member 2: Zoya (Member) -->
+                            <div class="squircle-tile tile-member active-lime" onclick="openSquadModal(1)" title="Zoya M. — VIP Regular ✨">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Zoya M.">
+                                <div class="tile-popover">
+                                    <strong>Zoya M. (23)</strong>
+                                    <small>✨ VIP Regular · 145 KP</small>
+                                    <span>Architect. Deep house & rooftop lover.</span>
+                                </div>
+                            </div>
+
+                            <div class="squircle-tile tile-ghost"></div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="matrix-row">
+                            <!-- Member 3: Dev S. -->
+                            <div class="squircle-tile tile-member" onclick="openSquadModal(2)" title="Dev S. — Music Lead 🎧">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Dev S.">
+                                <div class="tile-popover">
+                                    <strong>Dev S. (26)</strong>
+                                    <small>🎧 Audio Producer · 150 KP</small>
+                                    <span>Modular synths and filter coffee.</span>
+                                </div>
+                            </div>
+
+                            <!-- Center Hub: NITE CREW Squad Core -->
+                            <div class="squircle-tile tile-center-hub" onclick="showToast('⚡ NITE CREW Squad Core — 15 Confirmed Squads Forming Tonight')">
+                                <div class="hub-logo-mark" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                    <img src="assets/logo-icon.png" alt="NC Logo" style="width: 42px; height: 42px; border-radius: 10px; object-fit: cover; box-shadow: 0 0 14px rgba(204, 255, 0, 0.5);">
+                                    <span class="hub-sub-text" style="margin-top: 4px;">SQUAD</span>
+                                </div>
+                            </div>
+
+                            <!-- Member 4: Meera D. -->
+                            <div class="squircle-tile tile-member active-lime" onclick="openSquadModal(2)" title="Meera D. — Vibe Lead 🎵">
+                                <div class="speaking-wave-ring" style="animation-delay: 0.6s;"></div>
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Meera D.">
+                                <div class="tile-popover">
+                                    <strong>Meera D. (24)</strong>
+                                    <small>🎵 Vibe Lead · 175 KP</small>
+                                    <span>Creative copywriter & acid techno explorer.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Open Slots Waiting for You -->
+                        <div class="matrix-row">
+                            <div class="squircle-tile tile-ghost"></div>
+
+                            <!-- Open Slot 1 -->
+                            <div class="squircle-tile tile-open-slot" onclick="claimOpenSlotPrompt('Spot 5')">
+                                <span class="plus-icon">+</span>
+                                <small>OPEN SPOT</small>
+                            </div>
+
+                            <!-- Open Slot 2 -->
+                            <div class="squircle-tile tile-open-slot" onclick="claimOpenSlotPrompt('Spot 6')" style="animation-delay: 1.5s;">
+                                <span class="plus-icon">+</span>
+                                <small>OPEN SPOT</small>
+                            </div>
+
+                            <div class="squircle-tile tile-ghost"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SQUAD SEGREGATION & MULTI-CHOICE CONTROL HUB -->
+        <div class="squad-segregation-hub" id="segregationHub">
+            <!-- Row 1: Primary Category / Circle Type Choices -->
+            <div class="seg-category-row">
+                <span class="seg-label">SQUAD CIRCLE:</span>
+                <div class="choice-pills-wrap">
+                    <button class="seg-choice-pill active" id="pillCircleAll" onclick="setSquadCircle('all', this)">
+                        <span>All Squads</span>
+                        <span class="pill-count-badge" id="countAll">15</span>
+                    </button>
+                    <button class="seg-choice-pill" id="pillCircleGirls" onclick="setSquadCircle('girls', this)" style="border-color: rgba(167, 139, 250, 0.4);">
+                        <span>👑 NITE GIRLS (Women Only)</span>
+                        <span class="pill-count-badge" id="countGirls">4</span>
+                    </button>
+                    <button class="seg-choice-pill" id="pillCircleMixed" onclick="setSquadCircle('mixed', this)">
+                        <span>⚡ Mixed Social</span>
+                        <span class="pill-count-badge" id="countMixed">8</span>
+                    </button>
+                    <button class="seg-choice-pill" id="pillCircleVIP" onclick="setSquadCircle('vip', this)">
+                        <span>🍸 VIP Table & Rooftops</span>
+                        <span class="pill-count-badge" id="countVIP">3</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Row 2: Dimensional Filters (Zone, Music Vibe, Group Size, Synergy, Open Spots) -->
+            <div class="seg-dropdowns-bar">
+                <!-- Zone Choice -->
+                <div class="seg-select-box">
+                    <span class="seg-select-icon">📍</span>
+                    <select id="filterZone" class="seg-native-select" onchange="applySquadFilters()">
+                        <option value="all">All Mumbai Zones</option>
+                        <option value="bandra">Bandra & Khar</option>
+                        <option value="lower-parel">Lower Parel & Worli</option>
+                        <option value="juhu-bkc">Juhu & BKC</option>
+                        <option value="andheri">Andheri West & Suburbs</option>
+                    </select>
+                </div>
+
+                <!-- Music Vibe Choice -->
+                <div class="seg-select-box">
+                    <span class="seg-select-icon">🎵</span>
+                    <select id="filterVibe" class="seg-native-select" onchange="applySquadFilters()">
+                        <option value="all">All Music Vibes</option>
+                        <option value="techno">Melodic Techno & Rave</option>
+                        <option value="commercial">Commercial & Hip-Hop</option>
+                        <option value="pop">Retro Pop & Bollywood</option>
+                        <option value="house">Deep House & Nu-Disco</option>
+                        <option value="afro">Afro House & Amapiano</option>
+                        <option value="rock">Indie Rock & Grunge</option>
+                    </select>
+                </div>
+
+                <!-- Group Size Limit Choice -->
+                <div class="seg-select-box">
+                    <span class="seg-select-icon">👥</span>
+                    <select id="filterGroupSize" class="seg-native-select" onchange="applySquadFilters()">
+                        <option value="all">Group Size: All (4–6)</option>
+                        <option value="4">4 Members (Intimate)</option>
+                        <option value="5">5 Members (Balanced)</option>
+                        <option value="6">6 Members (Full Squad)</option>
+                    </select>
+                </div>
+
+                <!-- Least-Misery Synergy Threshold -->
+                <div class="seg-select-box">
+                    <span class="seg-select-icon">⚖️</span>
+                    <select id="filterSynergy" class="seg-native-select" onchange="applySquadFilters()">
+                        <option value="all">Min Synergy: Any</option>
+                        <option value="88">88%+ Min Synergy</option>
+                        <option value="92">92%+ High Synergy</option>
+                        <option value="94">94%+ Elite Synergy</option>
+                    </select>
+                </div>
+
+                <!-- Spot Openings Filter -->
+                <div class="seg-select-box">
+                    <span class="seg-select-icon">⚡</span>
+                    <select id="filterSpots" class="seg-native-select" onchange="applySquadFilters()">
+                        <option value="all">Spots: Any Status</option>
+                        <option value="1">1 Spot Remaining</option>
+                        <option value="2">2 Spots Remaining</option>
+                        <option value="open">Has Open Spots</option>
+                    </select>
+                </div>
+
+                <!-- Reset Clear Button -->
+                <button class="btn-seg-clear" onclick="resetAllFilters()" title="Reset all choices">
+                    ↺ Reset Filters
+                </button>
+            </div>
+
+            <!-- Row 3: Squad Member Roles Filter -->
+            <div class="seg-roles-row">
+                <span class="seg-label" style="font-size: 10px; color: var(--text-muted);">FILTER BY LEAD ROLE:</span>
+                <button class="role-choice-pill active" id="rolePillAll" onclick="filterByRole('all')">All Roles</button>
+                <button class="role-choice-pill" id="rolePillHost" onclick="filterByRole('Host')">Host & Organizer 👑</button>
+                <button class="role-choice-pill" id="rolePillVibe" onclick="filterByRole('Vibe')">Vibe Lead 🎵</button>
+                <button class="role-choice-pill" id="rolePillLogistics" onclick="filterByRole('Logistics')">Entry & Logistics ⚡</button>
+                <button class="role-choice-pill" id="rolePillSocial" onclick="filterByRole('Social')">Social Connector 🦋</button>
+            </div>
+
+            <!-- Balanced 1:1 Gender Ratio & Security Gate Meetup Strip -->
+            <div style="background: rgba(204, 255, 0, 0.05); border: 1px solid rgba(204, 255, 0, 0.22); border-radius: 14px; padding: 12px 18px; margin-top: 14px; font-size: 12px; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 15px;">⚖️</span>
+                    <span><strong>Balanced 1:1 Gender Ratio:</strong> Squads of 4–6 are formed with an equal 2M+2F or 3M+3F balance to satisfy venue couple-entry policies at the door and eliminate stag rejections.</span>
+                </span>
+                <span style="color: var(--neon-lime); font-family: var(--font-mono); font-size: 11px; font-weight: 700; white-space: nowrap; background: rgba(204, 255, 0, 0.1); padding: 4px 10px; border-radius: 100px; border: 1px solid rgba(204, 255, 0, 0.25);">
+                    🛡️ Meetup: Main Entrance Security Gate
+                </span>
+            </div>
+        </div>
+
+        <!-- SQUADS RESULTS HEADER & ACTIVE FILTERS STRIP -->
+        <div class="squad-results-status">
+            <div>
+                <span class="section-super">CONFIRMED CREWS FORMING TONIGHT</span>
+                <h2 class="section-main-title" style="font-size: 26px; margin-top: 4px;">
+                    BROWSE <span class="highlight-lime">SQUADS</span> (<span id="resultsCount">15</span> AVAILABLE)
+                </h2>
+            </div>
+            <div id="activeFilterTags" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <!-- Tags rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- Squads Cards Grid -->
+        <div class="squads-grid" id="squadsGrid">
+            <!-- Populated dynamically by JS from data.js -->
+        </div>
+    </main>
+
+    <!-- SMART SQUAD & MEMBERS SMART PROFILE DRAWER MODAL -->
+    <div class="modal-backdrop hidden" id="squadDetailModal">
+        <div class="squad-modal-card">
+            <button class="modal-close-btn" onclick="closeSquadModal()" aria-label="Close modal">✕</button>
+            <div id="squadModalContent">
+                <!-- Populated dynamically by JS -->
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="chat.html">Coordination Chat</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI ZONES</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        // Multi-faceted Segregation Filter State
+        let filterState = {
+            circle: 'all',     // 'all', 'girls', 'mixed', 'vip'
+            zone: 'all',       // 'all', 'bandra', 'lower-parel', 'juhu-bkc', 'andheri'
+            vibe: 'all',       // 'all', 'techno', 'commercial', 'pop', 'house', 'afro', 'rock'
+            groupSize: 'all',  // 'all', '4', '5', '6'
+            synergy: 'all',    // 'all', '88', '92', '94'
+            spots: 'all',      // 'all', '1', '2', 'open'
+            role: 'all'        // 'all', 'Host', 'Vibe', 'Logistics', 'Social'
+        };
+
+        function updateCategoryCounts() {
+            const allCount = SQUADS_DATA.length;
+            const girlsCount = SQUADS_DATA.filter(s => s.tag.includes('GIRLS') || s.tag.includes('WOMEN')).length;
+            const vipCount = SQUADS_DATA.filter(s => s.tag.includes('VIP') || s.tag.includes('LUXURY')).length;
+            const mixedCount = allCount - girlsCount;
+
+            const elAll = document.getElementById('countAll');
+            const elGirls = document.getElementById('countGirls');
+            const elMixed = document.getElementById('countMixed');
+            const elVIP = document.getElementById('countVIP');
+
+            if (elAll) elAll.textContent = allCount;
+            if (elGirls) elGirls.textContent = girlsCount;
+            if (elMixed) elMixed.textContent = mixedCount;
+            if (elVIP) elVIP.textContent = vipCount;
+        }
+
+        function setSquadCircle(circleType, btn) {
+            filterState.circle = circleType;
+            document.querySelectorAll('.seg-choice-pill').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            applySquadFilters();
+        }
+
+        function filterByRole(roleName) {
+            filterState.role = roleName;
+            document.querySelectorAll('.role-choice-pill').forEach(b => b.classList.remove('active'));
+            
+            if (roleName === 'all') {
+                const el = document.getElementById('rolePillAll');
+                if (el) el.classList.add('active');
+            } else if (roleName === 'Host') {
+                const el = document.getElementById('rolePillHost');
+                if (el) el.classList.add('active');
+            } else if (roleName === 'Vibe') {
+                const el = document.getElementById('rolePillVibe');
+                if (el) el.classList.add('active');
+            } else if (roleName === 'Logistics') {
+                const el = document.getElementById('rolePillLogistics');
+                if (el) el.classList.add('active');
+            } else if (roleName === 'Social') {
+                const el = document.getElementById('rolePillSocial');
+                if (el) el.classList.add('active');
+            }
+
+            applySquadFilters();
+        }
+
+        // Clickable Hero Metric Handlers
+        function cycleGroupSizeFilter() {
+            const select = document.getElementById('filterGroupSize');
+            if (!select) return;
+            const sizes = ['all', '4', '5', '6'];
+            let nextIndex = (sizes.indexOf(filterState.groupSize) + 1) % sizes.length;
+            filterState.groupSize = sizes[nextIndex];
+            select.value = filterState.groupSize;
+            
+            const statVal = document.getElementById('statGroupSizeVal');
+            if (statVal) {
+                statVal.textContent = filterState.groupSize === 'all' ? '4–6' : `${filterState.groupSize} Members`;
+            }
+
+            applySquadFilters();
+            showToast(`Filtering for Group Size: ${filterState.groupSize === 'all' ? 'All (4–6)' : filterState.groupSize + ' Members'}`);
+        }
+
+        function toggleConsentFilter() {
+            // Toggles women-first 100% mutual consent circles
+            const isGirls = (filterState.circle === 'girls');
+            const target = isGirls ? 'all' : 'girls';
+            const btn = document.getElementById(isGirls ? 'pillCircleAll' : 'pillCircleGirls');
+            setSquadCircle(target, btn);
+            showToast(isGirls ? 'Showing all verified squads' : '👑 Filtered to 100% Mutual Consent Women-First Circles');
+        }
+
+        function toggleSynergyFilter() {
+            const select = document.getElementById('filterSynergy');
+            if (!select) return;
+            const synVals = ['all', '88', '92', '94'];
+            let nextIndex = (synVals.indexOf(filterState.synergy) + 1) % synVals.length;
+            filterState.synergy = synVals[nextIndex];
+            select.value = filterState.synergy;
+
+            const statVal = document.getElementById('statSynergyVal');
+            if (statVal) {
+                statVal.textContent = filterState.synergy === 'all' ? '88%+' : `${filterState.synergy}%+`;
+            }
+
+            applySquadFilters();
+            showToast(`Filtering Min Synergy: ${filterState.synergy === 'all' ? 'Any' : filterState.synergy + '%+'}`);
+        }
+
+        function resetAllFilters() {
+            filterState = {
+                circle: 'all',
+                zone: 'all',
+                vibe: 'all',
+                groupSize: 'all',
+                synergy: 'all',
+                spots: 'all',
+                role: 'all'
+            };
+
+            document.querySelectorAll('.seg-choice-pill').forEach(b => b.classList.remove('active'));
+            const pAll = document.getElementById('pillCircleAll');
+            if (pAll) pAll.classList.add('active');
+
+            document.getElementById('filterZone').value = 'all';
+            document.getElementById('filterVibe').value = 'all';
+            document.getElementById('filterGroupSize').value = 'all';
+            document.getElementById('filterSynergy').value = 'all';
+            document.getElementById('filterSpots').value = 'all';
+
+            document.querySelectorAll('.role-choice-pill').forEach(b => b.classList.remove('active'));
+            const rAll = document.getElementById('rolePillAll');
+            if (rAll) rAll.classList.add('active');
+
+            const statVal = document.getElementById('statGroupSizeVal');
+            if (statVal) statVal.textContent = '4–6';
+            const statSyn = document.getElementById('statSynergyVal');
+            if (statSyn) statSyn.textContent = '88%+';
+
+            applySquadFilters();
+            showToast('All squad filters reset to default (15 Squads).');
+        }
+
+        function applySquadFilters() {
+            // Read dropdown values
+            filterState.zone = document.getElementById('filterZone').value;
+            filterState.vibe = document.getElementById('filterVibe').value;
+            filterState.groupSize = document.getElementById('filterGroupSize').value;
+            filterState.synergy = document.getElementById('filterSynergy').value;
+            filterState.spots = document.getElementById('filterSpots').value;
+
+            const filtered = SQUADS_DATA.filter(sq => {
+                const memberCount = sq.members.length;
+                const spotsRemaining = Math.max(0, sq.spotsTotal - memberCount);
+
+                // 1. Circle Type
+                if (filterState.circle === 'girls') {
+                    if (!sq.tag.includes('GIRLS') && !sq.tag.includes('WOMEN')) return false;
+                } else if (filterState.circle === 'mixed') {
+                    if (sq.tag.includes('GIRLS') || sq.tag.includes('WOMEN')) return false;
+                } else if (filterState.circle === 'vip') {
+                    if (!sq.tag.includes('VIP') && !sq.tag.includes('LUXURY')) return false;
+                }
+
+                // 2. Zone
+                if (filterState.zone !== 'all') {
+                    if (sq.zone !== filterState.zone) return false;
+                }
+
+                // 3. Music Vibe
+                if (filterState.vibe !== 'all') {
+                    const text = (sq.musicVibe + ' ' + sq.tag).toLowerCase();
+                    if (filterState.vibe === 'techno' && !text.includes('techno') && !text.includes('synthwave')) return false;
+                    if (filterState.vibe === 'commercial' && !text.includes('commercial') && !text.includes('hip-hop')) return false;
+                    if (filterState.vibe === 'pop' && !text.includes('pop') && !text.includes('bollywood') && !text.includes('retro')) return false;
+                    if (filterState.vibe === 'house' && !text.includes('house') && !text.includes('disco')) return false;
+                    if (filterState.vibe === 'afro' && !text.includes('afro') && !text.includes('amapiano')) return false;
+                    if (filterState.vibe === 'rock' && !text.includes('rock') && !text.includes('indie')) return false;
+                }
+
+                // 4. Group Size
+                if (filterState.groupSize !== 'all') {
+                    if (sq.spotsTotal !== parseInt(filterState.groupSize)) return false;
+                }
+
+                // 5. Min Synergy
+                if (filterState.synergy !== 'all') {
+                    if (sq.leastMiseryScore < parseInt(filterState.synergy)) return false;
+                }
+
+                // 6. Spots
+                if (filterState.spots !== 'all') {
+                    if (filterState.spots === '1' && spotsRemaining !== 1) return false;
+                    if (filterState.spots === '2' && spotsRemaining !== 2) return false;
+                    if (filterState.spots === 'open' && spotsRemaining <= 0) return false;
+                }
+
+                // 7. Role
+                if (filterState.role !== 'all') {
+                    const hasRole = sq.members.some(m => m.role.toLowerCase().includes(filterState.role.toLowerCase()));
+                    if (!hasRole) return false;
+                }
+
+                return true;
+            });
+
+            renderSquadCards(filtered);
+        }
+
+        function renderSquadCards(squadsList) {
+            const container = document.getElementById('squadsGrid');
+            const countEl = document.getElementById('resultsCount');
+            if (countEl) countEl.textContent = squadsList.length;
+
+            if (!container) return;
+
+            if (squadsList.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; padding: 60px 20px; text-align: center; background: #11111a; border-radius: 20px; border: 1px dashed rgba(255,255,255,0.15);">
+                        <span style="font-size: 32px; display: block; margin-bottom: 10px;">🔍</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 18px; color: #fff; margin-bottom: 6px;">No Squads Found</h3>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                            No squads match the current combination of filters. Try relaxing your choices.
+                        </p>
+                        <button class="btn-pixel-primary" onclick="resetAllFilters()">
+                            <span>Reset All Filters ↺</span>
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const ringColors = ['ring-lime', 'ring-purple', 'ring-cyan', 'ring-yellow'];
+
+            container.innerHTML = squadsList.map(sq => {
+                const memberCount = sq.members.length;
+                const spotsRemaining = Math.max(0, sq.spotsTotal - memberCount);
+
+                // Build confirmed member seats (Clubhouse/Talk-Flow style)
+                const memberSeatsHtml = sq.members.map((m, idx) => {
+                    const colorClass = ringColors[idx % ringColors.length];
+                    const isHost = (idx === 0);
+                    return `
+                        <div class="tf-member-seat" title="${m.name} (${m.role})">
+                            <div class="tf-avatar-ring ${colorClass}">
+                                ${isHost ? '<div class="speaking-dot-bubble" title="Squad Host"></div>' : ''}
+                                <img src="${m.avatar}" class="tf-avatar-img" alt="${m.name}" />
+                            </div>
+                            <span class="tf-member-name">${m.name.split(' ')[0]}</span>
+                            <span class="tf-member-role ${isHost ? 'role-host' : ''}">${isHost ? 'Host 👑' : m.role.split(' ')[0]}</span>
+                        </div>
+                    `;
+                }).join('');
+
+                // Build open slot seats
+                let openSlotsHtml = '';
+                for (let i = 0; i < spotsRemaining; i++) {
+                    openSlotsHtml += `
+                        <div class="tf-member-seat seat-open" title="Open Slot — Click to Join">
+                            <div class="tf-avatar-ring ring-dashed">
+                                <span class="tf-plus">+</span>
+                            </div>
+                            <span class="tf-member-name">Open</span>
+                            <span class="tf-member-role role-open">Join</span>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="talkflow-squad-card ${sq.tag.includes('GIRLS') ? 'girls-circle-card' : ''}" onclick="openSquadModal(${sq.id})">
+                        <div class="tf-card-top">
+                            <span class="tf-category-tag ${sq.tag.includes('GIRLS') ? 'tag-purple' : ''}">${sq.tag}</span>
+                            <span class="tf-live-badge">
+                                <span class="pulse-dot"></span>
+                                ${memberCount}/${sq.spotsTotal} SPOTS
+                            </span>
+                        </div>
+
+                        <h3 class="tf-squad-title">${sq.title}</h3>
+                        <div class="tf-venue-row">
+                            <span class="tf-venue-icon">📍</span>
+                            <strong>${sq.dayTime} · ${sq.venue}</strong>
+                        </div>
+
+                        <div class="tf-specs-row">
+                            <span>🎵 ${sq.musicVibe.split(',')[0]}</span>
+                            <span class="tf-spend-pill">${sq.targetSpend}</span>
+                        </div>
+
+                        <!-- 4-Across Member Avatars Grid -->
+                        <div class="tf-members-grid">
+                            ${memberSeatsHtml}
+                            ${openSlotsHtml}
+                        </div>
+
+                        <!-- Least-Misery Metric Bar -->
+                        <div class="tf-least-misery-bar">
+                            <span class="tf-lm-icon">⚖️</span>
+                            <div class="tf-lm-text">
+                                <strong>Least-Misery Match: ${sq.leastMiseryScore}%</strong>
+                                <small>Meetup: ${sq.meetupPoint.split('(')[0]}</small>
+                            </div>
+                        </div>
+
+                        <button class="btn-tf-join" onclick="event.stopPropagation(); openSquadModal(${sq.id})">
+                            <span>VIEW SQUAD & MEMBERS (${spotsRemaining} SPOTS LEFT)</span>
+                            <span>⚡</span>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openSquadModal(squadId) {
+            const sq = SQUADS_DATA.find(s => s.id === squadId);
+            if (!sq) return;
+            const modal = document.getElementById('squadDetailModal');
+            const content = document.getElementById('squadModalContent');
+            if (!modal || !content) return;
+
+            const memberCount = sq.members.length;
+            const spotsRemaining = Math.max(0, sq.spotsTotal - memberCount);
+
+            const membersHtml = sq.members.map(m => `
+                <div class="member-smart-profile-card">
+                    <div class="msp-header">
+                        <img src="${m.avatar}" alt="${m.name}" class="msp-avatar-img">
+                        <div class="msp-info">
+                            <div class="msp-name-row">
+                                <h4>${m.name}</h4>
+                                <span class="msp-role-badge">${m.role}</span>
+                            </div>
+                            <span class="msp-age-area">${m.age} yrs · ${m.area}</span>
+                        </div>
+                    </div>
+
+                    <p class="msp-bio">"${m.bio}"</p>
+
+                    <div class="msp-interests-row">
+                        ${m.interests.map(i => `<span class="msp-interest-pill">${i}</span>`).join('')}
+                    </div>
+
+                    <div class="msp-stats-row">
+                        <div class="msp-stat-item">
+                            <span class="label">Punctuality</span>
+                            <strong class="val lime">${m.punctuality}</strong>
+                        </div>
+                        <div class="msp-stat-item">
+                            <span class="label">Karma Score</span>
+                            <strong class="val">${m.karma} KP</strong>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            content.innerHTML = `
+                <div class="squad-modal-header">
+                    <span class="pixel-tag ${sq.tag.includes('GIRLS') ? 'tag-neon-purple' : 'tag-neon-lime'}">${sq.tag}</span>
+                    <h2>${sq.title}</h2>
+                    <p class="sm-venue-line">📍 <strong>${sq.venue}</strong> · ${sq.dayTime}</p>
+                </div>
+
+                <div class="least-misery-explainer-box">
+                    <div class="lme-top">
+                        <span class="lme-badge">⚖️ LEAST-MISERY COMPATIBILITY: ${sq.leastMiseryScore}%</span>
+                        <span class="lme-spots">${spotsRemaining > 0 ? spotsRemaining + ' spots remaining' : 'Squad full'}</span>
+                    </div>
+                    <p class="lme-desc">
+                        Our algorithm optimizes to minimize individual discomfort across music taste, spend bracket (${sq.targetSpend}), and arrival timing. Meetup point: <strong>${sq.meetupPoint}</strong>.
+                    </p>
+                </div>
+
+                <div class="smart-profiles-container">
+                    <h3 class="spc-title">CONFIRMED CREW MEMBERS (${memberCount}/${sq.spotsTotal})</h3>
+                    <div class="members-profiles-grid">
+                        ${membersHtml}
+                    </div>
+                </div>
+
+                <div class="squad-modal-action-bar">
+                    <button class="btn-neo-huge btn-lime btn-full" id="btnJoinSquadAction" onclick="requestJoinSquad(${sq.id})">
+                        <span>REQUEST TO JOIN THIS SQUAD (${spotsRemaining} SPOTS LEFT)</span>
+                        <span>⚡</span>
+                    </button>
+                    <a href="chat.html" class="btn-neo-huge btn-ghost-white btn-full" style="text-align: center; text-decoration: none; margin-top: 8px;">
+                        <span>OPEN SQUAD COORDINATION CHAT 💬</span>
+                    </a>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeSquadModal() {
+            const modal = document.getElementById('squadDetailModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function requestJoinSquad(squadId) {
+            const btn = document.getElementById('btnJoinSquadAction');
+            if (btn) {
+                btn.innerHTML = `<span>REQUEST SUBMITTED TO HOST ⚡</span>`;
+                btn.style.background = '#444';
+                btn.style.color = '#fff';
+                btn.disabled = true;
+            }
+            showToast("⚡ Join request submitted! The squad host will review your profile in the coordination chat.");
+        }
+
+        function claimOpenSlotPrompt(slotName) {
+            openSquadModal(1);
+            showToast(`Opening squad with available ${slotName}!`);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCategoryCounts();
+            applySquadFilters();
+        });
+    </script>
+</body>
+</html>

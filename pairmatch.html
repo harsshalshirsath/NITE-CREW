@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1v1 Mutual PairMatch | NITE CREW Mumbai</title>
+    <meta name="description" content="Verified 1v1 entry companion introductions with strict mutual opt-in and women-first review authority.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body class="dark-theme">
+
+    <div class="bg-pattern-layer"></div>
+    <div class="bg-glow-orb orb-purple"></div>
+    <div class="bg-glow-orb orb-lime"></div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="app-nav" id="appNav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span style="color: var(--neon-lime);">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events & Venues</a>
+                <a href="squads.html" class="nav-link">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link active">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link">Coordination Chat</a>
+                <a href="pass.html" class="nav-link">Active Pass</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="squads.html" class="btn-pixel-primary">
+                    <span>⚡ Browse Squads</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container container" style="padding-top: 86px; padding-bottom: 20px; min-height: unset;">
+        <!-- Compact Top Control Bar (Role-Confidential Economics & Safety) -->
+        <div class="page-header-box" style="padding: 16px 20px; margin-bottom: 12px; border-radius: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pixel-tag tag-neon-lime" style="font-size: 8px;">1v1 PAIRMATCH</span>
+                    <h1 class="page-main-title" style="font-size: 20px; margin: 0; display: inline;">
+                        Companion <span class="highlight-lime">Discovery</span>
+                    </h1>
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <span class="pixel-tag tag-neon-purple" style="font-size: 8px;">100% DISCRETION</span>
+                    <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); padding: 4px 12px; border-radius: 100px; font-size: 11px; color: #cbd5e1;">
+                        ✨ <strong>Your Night. Your Choice:</strong> Zero post-entry strings
+                    </div>
+                </div>
+            </div>
+
+            <!-- Role-Specific Dashboard Status Banner -->
+            <div id="roleDashboardHeader">
+                <!-- Dynamically populated by switchPerspective (No cross-gender controls) -->
+            </div>
+
+            <!-- Role-Confidential Commercial & Meetup Strip (Only user's own numbers shown) -->
+            <div class="pricing-model-strip" style="background: rgba(204, 255, 0, 0.04); border: 1px solid rgba(204, 255, 0, 0.18); border-radius: 14px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <!-- Male Fee (Hidden from Females) -->
+                    <div id="stripMaleOffer" style="display: block;">
+                        <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); display: block;">MALE GUEST OFFER</span>
+                        <strong style="color: var(--neon-lime); font-size: 15px; font-family: var(--font-heading);">₹999</strong>
+                        <small style="color: var(--text-silver); text-decoration: line-through; font-size: 10.5px; margin-left: 4px;">₹2,500–₹3,000 stag fee</small>
+                    </div>
+
+                    <!-- Female Reward (Hidden from Males) -->
+                    <div id="stripFemaleReward" style="display: none;">
+                        <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); display: block;">FEMALE PLATFORM REWARD</span>
+                        <strong style="color: #a78bfa; font-size: 15px; font-family: var(--font-heading);">Up to ₹800 F&B Credits</strong>
+                        <small style="color: var(--text-silver); font-size: 10.5px; margin-left: 4px;">Sponsored by NITE CREW & Venue</small>
+                    </div>
+
+                    <div id="stripDivider" style="height: 22px; width: 1px; background: rgba(255,255,255,0.1); display: none;"></div>
+
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); display: block;">SAFE MEETUP POINT</span>
+                        <strong style="color: #fff; font-size: 12px;">Main Entrance Security Gate & Valet Desk</strong>
+                    </div>
+                </div>
+
+                <div id="roleStripSubtext" style="font-size: 11px; color: var(--neon-lime);">
+                    🛡️ Supervised strictly at venue security gate. 60%+ savings on stag barrier.
+                </div>
+            </div>
+        </div>
+
+        <!-- Incoming Requests Tray (Rendered exclusively for Girls) -->
+        <div id="incomingRequestsTray" class="hidden" style="margin-bottom: 12px;">
+            <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- MAIN SINGLE-VIEWPORT PAIRMATCH SHOWCASE (HORIZONTAL CARD) -->
+        <div class="pair-single-screen-wrap">
+            <!-- Top Controls & Context Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; padding: 2px 4px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <h3 id="deckTitle" style="font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: #fff; margin: 0;">
+                        Verified Women Active for 1v1 Entry
+                    </h3>
+                    <span id="deckCounter" style="font-family: var(--font-mono); font-size: 10.5px; color: var(--neon-lime); background: rgba(204, 255, 0, 0.08); border: 1px solid rgba(204, 255, 0, 0.2); padding: 2px 10px; border-radius: 100px;">
+                        Profile 1 of 6
+                    </span>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11.5px; color: var(--text-silver);">Venue:</span>
+                        <select id="venueFilterSelect" class="neo-select" onchange="onVenueChange(this.value)" style="border-radius: 100px; padding: 5px 12px; font-size: 11.5px;">
+                            <option value="all">All Mumbai Venues</option>
+                            <option value="Bastian At The Top">Bastian At The Top (Bandra)</option>
+                            <option value="145 Bandra">145 Bandra</option>
+                            <option value="antiSOCIAL">antiSOCIAL (Lower Parel)</option>
+                            <option value="Toy Room Mumbai">Toy Room Mumbai (BKC)</option>
+                            <option value="AER Rooftop Bar">AER Rooftop Bar (Worli)</option>
+                            <option value="Diablo Mumbai">Diablo (Worli)</option>
+                        </select>
+                    </div>
+
+                    <div id="activeVenueContextPill" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 100px; padding: 5px 14px; font-size: 11px; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+                        <span style="color: var(--neon-lime);">📍</span>
+                        <strong id="arenaVenueName">Bastian At The Top</strong>
+                        <span style="color: var(--text-muted);">·</span>
+                        <span id="arenaVenueArea" style="color: #cbd5e1;">Bandra West</span>
+                        <span style="color: var(--text-muted);">·</span>
+                        <span id="arenaVenueLandmark" style="color: var(--neon-lime); font-size: 10.5px;">Main Security Gate</span>
+                    </div>
+
+                    <a href="chat.html" class="btn-pixel-primary" style="padding: 6px 14px; font-size: 11.5px;">
+                        <span>💬 In-App Chat</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Single Discover Candidate Card Area (HORIZONTAL SPLIT CARD) -->
+            <div id="candidateCardArea">
+                <!-- Populated dynamically by JS -->
+            </div>
+
+            <!-- Developer / Demo Persona Switcher (Subtle footer link, NOT on the dashboard) -->
+            <div style="text-align: center; margin-top: 14px; padding: 8px; font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.06);">
+                <small>Demo Role Switcher:</small> 
+                <a href="javascript:void(0)" onclick="switchPerspective('male')" style="color: var(--neon-lime); text-decoration: underline; margin: 0 6px; font-weight: 700;">🧔 Rohan V. (Guy View)</a> · 
+                <a href="javascript:void(0)" onclick="switchPerspective('female')" style="color: #a78bfa; text-decoration: underline; margin: 0 6px; font-weight: 700;">👩 Zoya M. (Girl View)</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- PAIR SUCCESS MODAL CELEBRATION -->
+    <div class="modal-backdrop hidden" id="pairSuccessModal">
+        <div class="modal-brutal-card" style="text-align: center; max-width: 480px;">
+            <button class="modal-close-btn" onclick="closeSuccessModal()" aria-label="Close modal">✕</button>
+            <div style="font-size: 40px; margin-bottom: 8px;">🎉</div>
+            <span class="pixel-tag tag-neon-lime">MUTUAL CONSENT GRANTED</span>
+            <h2 style="font-family: var(--font-heading); font-size: 26px; font-weight: 900; margin: 8px 0;">Pairing Confirmed!</h2>
+            <p style="font-size: 13.5px; color: var(--text-silver); margin-bottom: 20px;">
+                Both members confirmed mutual opt-in. Coordination chat is unlocked and your digital entry pass has been generated.
+            </p>
+
+            <div class="pass-pairing-avatars" id="celebUsersRow" style="background: var(--bg-dark-1); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 18px; margin-bottom: 20px; display: flex; justify-content: space-around; align-items: center;">
+                <div style="text-align: center;">
+                    <img id="celebPartner1Img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--neon-lime); object-fit: cover;" alt="Partner 1">
+                    <span id="celebPartner1Name" style="font-size: 12px; font-weight: 800; display: block; margin-top: 6px;">Zoya M.</span>
+                </div>
+                <div style="font-size: 26px; color: var(--neon-lime);">⚡</div>
+                <div style="text-align: center;">
+                    <img id="celebPartner2Img" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--neon-purple); object-fit: cover;" alt="Partner 2">
+                    <span id="celebPartner2Name" style="font-size: 12px; font-weight: 800; display: block; margin-top: 6px;">Rohan V.</span>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="pass.html" class="btn-neo-huge btn-lime btn-full" style="text-align: center; text-decoration: none;">
+                    <span>VIEW DIGITAL PASS & QR 🎟️</span>
+                </a>
+                <a href="chat.html?channel=chan-pair-1" class="btn-neo-huge btn-ghost-white btn-full" style="text-align: center; text-decoration: none;">
+                    <span>OPEN COORDINATION CHAT 💬</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN PORTRAIT LIGHTBOX MODAL -->
+    <div class="portrait-lightbox-backdrop hidden" id="portraitLightboxModal" onclick="closePortraitLightbox()">
+        <div class="portrait-lightbox-content" onclick="event.stopPropagation()">
+            <button class="btn-lightbox-close" onclick="closePortraitLightbox()" aria-label="Close portrait view">✕</button>
+            <img src="" id="lightboxImg" class="portrait-full-img" alt="Candidate Full Portrait" />
+            <div class="portrait-lightbox-meta">
+                <h3 id="lightboxTitle">Candidate Name</h3>
+                <p id="lightboxSubtitle">Area · Occupation · Vibe</p>
+                <div style="margin-top: 10px;">
+                    <button class="btn-pixel-primary" onclick="closePortraitLightbox(); handlePairButtonClick(getActiveCandidates()[currentIndex].id);" style="padding: 8px 24px; font-size: 12px;">
+                        <span>⚡ Send 1v1 Pair Request</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ICEBREAKER QUICK NOTE MODAL -->
+    <div class="modal-backdrop hidden" id="icebreakerModal">
+        <div class="modal-brutal-card" style="max-width: 440px;">
+            <button class="modal-close-btn" onclick="closeIcebreakerModal()" aria-label="Close modal">✕</button>
+            <span class="pixel-tag tag-neon-lime">DOOR ICEBREAKER</span>
+            <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 900; margin: 10px 0 6px;">Send a Note with Request</h3>
+            <p style="font-size: 12.5px; color: var(--text-silver); margin-bottom: 14px;">
+                Add a quick message about arrival timing or drink preference. Numbers and socials are masked.
+            </p>
+            <textarea id="icebreakerTextInput" class="neo-select" style="width: 100%; height: 90px; resize: none; margin-bottom: 16px; font-family: var(--font-ui); font-size: 13px; padding: 10px; border-radius: 8px;" placeholder="Type your note..."></textarea>
+            <button class="btn-neo-huge btn-lime btn-full" onclick="confirmSendIcebreaker()">
+                <span>SEND NOTE & REQUEST ⚡</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="chat.html">Coordination Chat</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI ZONES</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        let perspective = 'male'; // 'male' or 'female'
+        let currentIndex = 0;
+        let selectedVenue = 'all';
+        let currentCandIdForNote = null;
+
+        // Initialize sample request if empty so Girl View is immediately testable
+        function initSampleRequests() {
+            const existing = localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY);
+            if (!existing || JSON.parse(existing).length === 0) {
+                const sampleReq = [
+                    {
+                        id: 991,
+                        guyId: 201,
+                        guyName: "Rohan V.",
+                        guyAge: 24,
+                        guyArea: "Bandra West",
+                        guyAvatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+                        girlId: 101,
+                        girlName: "Zoya M.",
+                        girlAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+                        venue: "Bastian At The Top",
+                        synergy: 94,
+                        punctuality: "99%",
+                        karma: "182 KP",
+                        note: "Heading to Bastian around 10:15 PM! Would love to pair up for door entry and grab the welcome drink.",
+                        timeAgo: "3 mins ago",
+                        status: "pending"
+                    }
+                ];
+                localStorage.setItem(STORAGE_PENDING_REQUESTS_KEY, JSON.stringify(sampleReq));
+            }
+        }
+
+        function getActiveCandidates() {
+            const list = (perspective === 'male') ? CANDIDATE_PROFILES_GIRLS : CANDIDATE_PROFILES_GUYS;
+            if (selectedVenue === 'all') return list;
+            return list.filter(c => c.targetClub === selectedVenue);
+        }
+
+        function switchPerspective(newRole) {
+            perspective = newRole;
+            currentIndex = 0;
+            
+            const headerWrap = document.getElementById('roleDashboardHeader');
+            const incomingTray = document.getElementById('incomingRequestsTray');
+            const maleStrip = document.getElementById('stripMaleOffer');
+            const femaleStrip = document.getElementById('stripFemaleReward');
+            const roleSubtext = document.getElementById('roleStripSubtext');
+
+            if (newRole === 'male') {
+                if (headerWrap) {
+                    headerWrap.innerHTML = `
+                        <div class="role-persona-banner male-mode">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(204, 255, 0, 0.15); border: 1.5px solid var(--neon-lime); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">
+                                    🧔
+                                </div>
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <strong style="color: #fff; font-size: 15px; font-family: var(--font-heading);">Male Member Companion Portal</strong>
+                                        <span style="background: rgba(204, 255, 0, 0.15); border: 1px solid var(--neon-lime); color: var(--neon-lime); font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 100px;">LOGGED IN AS ROHAN V.</span>
+                                    </div>
+                                    <p style="font-size: 12px; color: #cbd5e1; margin: 3px 0 0; line-height: 1.45;">
+                                        Browse verified female companions to pair up with for door entry. Pairing up unlocks the <strong>₹999 entry offer</strong> (saving ~₹2,000 vs solo stag cover charges). All meetups take place strictly at the venue's Main Entrance Security Gate.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (incomingTray) incomingTray.classList.add('hidden');
+                if (document.getElementById('deckTitle')) document.getElementById('deckTitle').textContent = "Verified Women Active for 1v1 Entry";
+                if (maleStrip) maleStrip.style.display = 'block';
+                if (femaleStrip) femaleStrip.style.display = 'none';
+                if (roleSubtext) roleSubtext.innerHTML = '🛡️ Supervised strictly at venue security gate. 60%+ savings on solo stag barrier.';
+            } else {
+                if (headerWrap) {
+                    headerWrap.innerHTML = `
+                        <div class="role-persona-banner female-mode">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(167, 139, 250, 0.2); border: 1.5px solid #a78bfa; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">
+                                    👩
+                                </div>
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <strong style="color: #fff; font-size: 15px; font-family: var(--font-heading);">Female Member Review Portal</strong>
+                                        <span style="background: rgba(167, 139, 250, 0.2); border: 1px solid #a78bfa; color: #a78bfa; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 100px;">100% UNILATERAL VETO AUTHORITY</span>
+                                    </div>
+                                    <p style="font-size: 12px; color: #cbd5e1; margin: 3px 0 0; line-height: 1.45;">
+                                        Women hold unilateral review authority. Review incoming companion requests below. Selected partner venues offer <strong>platform promotional F&B credits of up to ₹800</strong>. Post-entry, claim your welcome drink and choose freely to stay or disconnect.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (incomingTray) incomingTray.classList.remove('hidden');
+                if (document.getElementById('deckTitle')) document.getElementById('deckTitle').textContent = "Verified Men Active for 1v1 Entry";
+                if (femaleStrip) femaleStrip.style.display = 'block';
+                if (maleStrip) maleStrip.style.display = 'none';
+                if (roleSubtext) roleSubtext.innerHTML = '🍸 100% Unilateral Veto Authority · Welcome Drink & Discretion Guaranteed';
+                renderIncomingTray();
+            }
+
+            renderCandidate();
+        }
+
+        function renderIncomingTray() {
+            const tray = document.getElementById('incomingRequestsTray');
+            if (!tray) return;
+
+            const storedRequests = JSON.parse(localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY) || '[]');
+            const pending = storedRequests.filter(r => r.status === 'pending');
+
+            if (pending.length === 0) {
+                tray.innerHTML = `
+                    <div class="incoming-requests-box" style="padding: 24px 20px; text-align: center; border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 16px; margin-bottom: 24px;">
+                        <span style="font-size: 24px; display: block; margin-bottom: 6px;">✨</span>
+                        <h4 style="font-family: var(--font-heading); font-size: 15px; color: #fff;">No Pending Companion Requests</h4>
+                        <span style="font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px;">
+                            When verified male guests request companion entry for your selected venue, they will appear here for your review and approval.
+                        </span>
+                    </div>
+                `;
+                return;
+            }
+
+            tray.innerHTML = pending.map(req => `
+                <div class="incoming-requests-box" style="background: #12121d; border: 1.5px solid var(--neon-lime); border-radius: 20px; padding: 20px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <div class="in-req-top" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <span class="pixel-tag tag-neon-lime" style="font-size: 9px;">⚡ INCOMING ENTRY REQUEST</span>
+                        <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">${req.timeAgo || 'Just now'}</span>
+                    </div>
+                    <div class="in-req-profile" style="display: flex; gap: 16px; align-items: center; margin-bottom: 14px;">
+                        <img src="${req.guyAvatar}" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--neon-purple); flex-shrink: 0;" alt="${req.guyName}" />
+                        <div class="in-req-info" style="flex: 1;">
+                            <h4 style="font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 2px;">
+                                ${req.guyName} (${req.guyAge}) · ${req.guyArea}
+                            </h4>
+                            <p style="font-size: 12.5px; color: var(--text-silver); margin-bottom: 6px; line-height: 1.4;">
+                                "${req.note}"
+                            </p>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                                <span class="pixel-tag tag-neon-lime" style="font-size: 8px;">🔥 ${req.synergy}% SYNERGY</span>
+                                <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">📍 ${req.venue} · ${req.punctuality} On-Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="in-req-actions" style="display: flex; gap: 12px; margin-top: 14px;">
+                        <button class="btn-req-decline" onclick="declineRequest(${req.id})" style="flex: 1; padding: 12px; border-radius: 100px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; font-family: var(--font-heading); font-weight: 700; font-size: 13px; cursor: pointer;">
+                            ✕ Decline
+                        </button>
+                        <button class="btn-req-accept" onclick="acceptRequest(${req.id})" style="flex: 2; padding: 12px; border-radius: 100px; background: var(--neon-lime); border: none; color: #000; font-family: var(--font-heading); font-weight: 900; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);">
+                            <span>⚡ Accept & Unlock Chat</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function acceptRequest(reqId) {
+            let stored = JSON.parse(localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY) || '[]');
+            const req = stored.find(r => r.id === reqId);
+            
+            // Mark accepted
+            stored = stored.map(r => r.id === reqId ? { ...r, status: 'accepted' } : r);
+            localStorage.setItem(STORAGE_PENDING_REQUESTS_KEY, JSON.stringify(stored));
+
+            // Save active pass
+            const pass = {
+                partner1: req ? req.girlName : "Zoya M.",
+                partner2: req ? req.guyName : "Rohan V.",
+                partner1Avatar: req ? req.girlAvatar : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+                partner2Avatar: req ? req.guyAvatar : "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+                venue: req ? req.venue : "Bastian At The Top",
+                time: "10:15 PM Tonight",
+                landmark: "Ground Floor Valet Lobby",
+                status: "CONFIRMED",
+                passCode: "NC-" + Math.floor(100000 + Math.random() * 900000)
+            };
+            localStorage.setItem(STORAGE_PASS_KEY, JSON.stringify(pass));
+
+            // Update celebration modal with actual names & avatars
+            const p1Img = document.getElementById('celebPartner1Img');
+            const p1Name = document.getElementById('celebPartner1Name');
+            const p2Img = document.getElementById('celebPartner2Img');
+            const p2Name = document.getElementById('celebPartner2Name');
+            if (p1Img) p1Img.src = pass.partner1Avatar;
+            if (p1Name) p1Name.textContent = pass.partner1;
+            if (p2Img) p2Img.src = pass.partner2Avatar;
+            if (p2Name) p2Name.textContent = pass.partner2;
+
+            renderIncomingTray();
+            showSuccessModal();
+            showToast("🎉 Pair request accepted! Coordination chat is now unlocked.");
+        }
+
+        function declineRequest(reqId) {
+            let stored = JSON.parse(localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY) || '[]');
+            stored = stored.filter(r => r.id !== reqId);
+            localStorage.setItem(STORAGE_PENDING_REQUESTS_KEY, JSON.stringify(stored));
+            renderIncomingTray();
+            showToast("Request declined politely. Discretion preserved.");
+        }
+
+        function isRequestPendingFor(candId) {
+            const stored = JSON.parse(localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY) || '[]');
+            return stored.some(r => (r.girlId === candId || r.guyId === candId) && r.status === 'pending');
+        }
+
+        // Vibe Match & Group Suggestion Engine
+        function getTopSquadMatchForCandidate(c) {
+            let match = null;
+
+            // Priority 1: Match by venue
+            if (c.targetClub) {
+                match = SQUADS_DATA.find(s => s.venue.toLowerCase().includes(c.targetClub.toLowerCase()) || c.targetClub.toLowerCase().includes(s.venue.toLowerCase()));
+            }
+
+            // Priority 2: Match by genre / sound in same zone
+            if (!match && c.sound) {
+                const primaryGenre = c.sound.split(',')[0].toLowerCase().trim();
+                match = SQUADS_DATA.find(s => s.zone === c.zone && (s.musicVibe.toLowerCase().includes(primaryGenre) || s.tag.toLowerCase().includes(primaryGenre)));
+            }
+
+            // Priority 3: Any squad in same zone or default to squad 1
+            if (!match) {
+                match = SQUADS_DATA.find(s => s.zone === c.zone) || SQUADS_DATA[0];
+            }
+
+            const spotsLeft = Math.max(1, match.spotsTotal - match.members.length);
+            const score = Math.min(98, Math.max(88, c.synergyScore + 4));
+            const meetupPoint = match.meetupPoint.split('(')[0].trim();
+            const clubName = c.targetClub || match.venue;
+
+            return {
+                squad: match,
+                spotsLeft,
+                score,
+                reason: `Shares a high-affinity vibe for <strong>${c.sound}</strong> at <strong>${clubName}</strong> with ${match.leastMiseryScore}% Least-Misery group balance.`,
+                scenario: {
+                    preMeet: {
+                        time: "9:30 PM",
+                        title: "Casual Pre-Meet & Vibe Check",
+                        text: `Meet at <strong>${meetupPoint}</strong> for coffee or quick drinks to confirm comfort & timing before proceeding.`
+                    },
+                    doorEntry: {
+                        time: c.arrivalWindow || "10:15 PM",
+                        title: "Seamless 1:1 Frictionless Entry",
+                        text: `Arrive together at <strong>${clubName}</strong>. Enter smoothly as a verified couple/pair, bypassing stag cover and door rejection.`
+                    },
+                    convergence: {
+                        time: "10:45 PM+",
+                        title: `Convergence with ${match.title}`,
+                        text: `Connect with <strong>${match.members[0].name} (Host)</strong> and the 4–6 person squad inside. Split a shared table or explore the dancefloor together.`
+                    }
+                }
+            };
+        }
+
+        // Fullscreen Portrait Lightbox Modal Handlers
+        function openPortraitLightbox(imgUrl, title, subtitle) {
+            const modal = document.getElementById('portraitLightboxModal');
+            const img = document.getElementById('lightboxImg');
+            const titleEl = document.getElementById('lightboxTitle');
+            const subEl = document.getElementById('lightboxSubtitle');
+
+            if (img) img.src = imgUrl;
+            if (titleEl) titleEl.textContent = title;
+            if (subEl) subEl.textContent = subtitle;
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closePortraitLightbox() {
+            const modal = document.getElementById('portraitLightboxModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function renderCandidate() {
+            const container = document.getElementById('candidateCardArea');
+            const counter = document.getElementById('deckCounter');
+            if (!container) return;
+
+            const candidates = getActiveCandidates();
+            if (candidates.length === 0) {
+                container.innerHTML = `
+                    <div style="padding: 60px 20px; text-align: center; background: #11111a; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="color: var(--text-muted); font-size: 14px;">No verified members matching this venue filter.</p>
+                    </div>
+                `;
+                if (counter) counter.textContent = '0 profiles';
+                return;
+            }
+
+            if (currentIndex >= candidates.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = candidates.length - 1;
+
+            const c = candidates[currentIndex];
+            if (counter) counter.textContent = `Profile ${currentIndex + 1} of ${candidates.length}`;
+
+            // Update right venue context box
+            const venueMatch = MUMBAI_CLUBS.find(v => v.name === c.targetClub) || MUMBAI_CLUBS[0];
+            const elVenueName = document.getElementById('arenaVenueName');
+            const elVenueLandmark = document.getElementById('arenaVenueLandmark');
+            const elVenueArea = document.getElementById('arenaVenueArea');
+            if (elVenueName) elVenueName.textContent = venueMatch.name;
+            if (elVenueLandmark) elVenueLandmark.textContent = venueMatch.meetupSpot;
+            if (elVenueArea) elVenueArea.textContent = venueMatch.area;
+
+            const hasPendingReq = isRequestPendingFor(c.id);
+            const rec = getTopSquadMatchForCandidate(c);
+            const recSquad = (rec && rec.squad) ? rec.squad : SQUADS_DATA[0];
+            const hostName = (recSquad.members && recSquad.members[0]) ? recSquad.members[0].name.split(' ')[0] : 'Host';
+
+            const actionBtnText = (perspective === 'male') ? 
+                (hasPendingReq ? '✓ REQUEST SUBMITTED' : '⚡ PAIR UP (₹999)') :
+                (hasPendingReq ? '✓ REQUEST RECEIVED' : '⚡ INVITE / ACCEPT');
+
+            container.innerHTML = `
+                <div class="pair-horizontal-card">
+                    <!-- Left Column: Portrait Stage & Immediate Decision Actions -->
+                    <div class="card-left-stage" style="background-image: url('${c.avatar}');">
+                        <img src="${c.avatar}" class="card-stage-img" alt="${c.name}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';" />
+                        <!-- Top Badges -->
+                        <div class="left-stage-top">
+                            <div class="stage-pill lime">
+                                <span style="width: 7px; height: 7px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
+                                <span>Active Tonight · 2 km away</span>
+                            </div>
+                            <button class="btn-expand-portrait" onclick="openPortraitLightbox('${c.avatar}', '${c.name}, ${c.age}', '📍 ${c.area} · ${c.sound}')">
+                                <span>🔍 Full Photo</span>
+                            </button>
+                        </div>
+
+                        <!-- Bottom Information & Decision Buttons (Pinned right on the portrait) -->
+                        <div class="left-stage-bottom">
+                            <div class="stage-name-row">
+                                <h2 class="stage-name">${c.name}, ${c.age}</h2>
+                                <span class="stage-check" title="DigiLocker Govt ID Verified">✓</span>
+                            </div>
+
+                            <div class="stage-sub-info">
+                                <span>📍 ${c.area}</span>
+                                <span>·</span>
+                                <strong style="color: var(--neon-lime);">${c.targetClub}</strong>
+                            </div>
+
+                            <div class="stage-pills-row">
+                                <span class="stage-pill lime">${c.sound.split(',')[0]}</span>
+                                <span class="stage-pill">${c.vibe}</span>
+                                <span class="stage-pill">⏱️ ${c.punctuality} On-Time</span>
+                            </div>
+
+                            <!-- Immediate Action Decision Dock (VOTE RIGHT OR WRONG WITHOUT SCROLLING) -->
+                            <div class="stage-action-dock">
+                                <button class="btn-dock-pass-round" onclick="nextCandidate()" title="Pass / View Next Profile">
+                                    ✕
+                                </button>
+
+                                <button class="btn-dock-request-main" onclick="handlePairButtonClick(${c.id})" style="${hasPendingReq ? 'background: #2a2a3c; color: #94a3b8; box-shadow: none;' : ''}">
+                                    <span>${actionBtnText}</span>
+                                </button>
+
+                                <button class="btn-dock-note-round" onclick="openIcebreakerModal(${c.id})" title="Send Intro Note with Request">
+                                    💬
+                                </button>
+                            </div>
+
+                            <!-- Profile Counter Navigation -->
+                            <div class="stage-deck-nav">
+                                <button onclick="prevCandidate()">← Previous Profile</button>
+                                <span>Profile ${currentIndex + 1} of ${candidates.length}</span>
+                                <button onclick="nextCandidate()">Next Profile →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Profile Details, Top Squad Match & Gate Protocol -->
+                    <div class="card-right-details">
+                        <!-- Bio Quote -->
+                        <div class="card-right-section-box bio-quote-box">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                                <span style="font-family: var(--font-mono); font-size: 9.5px; color: var(--neon-lime); font-weight: 800; letter-spacing: 1px;">
+                                    ABOUT & NIGHTLIFE STYLE
+                                </span>
+                                <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">${c.job || 'Verified Member'}</span>
+                            </div>
+                            <p style="font-size: 13.5px; color: #f1f5f9; font-style: italic; line-height: 1.5; margin: 0;">
+                                "${c.bio}"
+                            </p>
+                        </div>
+
+                        <!-- Top Vibe Squad Match -->
+                        <div class="vibe-squad-rec-box">
+                            <div class="vsr-header">
+                                <span class="vsr-kicker">
+                                    <span>👑 TOP SQUAD MATCH FOR ${c.name.split(' ')[0].toUpperCase()}'S VIBE</span>
+                                </span>
+                                <span class="vsr-synergy-badge">★ ${rec.score}% MATCH</span>
+                            </div>
+                            <div class="vsr-squad-preview" style="margin-bottom: 0; padding: 12px 14px;">
+                                <div class="vsr-squad-title" style="font-size: 14.5px; font-weight: 800; margin-bottom: 3px;">${recSquad.title}</div>
+                                <div class="vsr-squad-meta" style="font-size: 11.5px; margin-bottom: 6px; display: flex; gap: 8px; align-items: center;">
+                                    <span>📍 ${recSquad.venue}</span>
+                                    <span>·</span>
+                                    <strong>⚡ ${rec.spotsLeft} SPOT${rec.spotsLeft > 1 ? 'S' : ''} LEFT</strong>
+                                </div>
+                                <div class="vsr-vibe-reason" style="font-size: 11.5px; margin-bottom: 8px; padding: 6px 10px; line-height: 1.4;">
+                                    ${rec.reason}
+                                </div>
+                                <a href="squads.html" class="btn-vsr-explore" style="height: 34px; font-size: 11px;">
+                                    <span>Explore Squad & Meet Host (${hostName}) 👥 →</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Safe Gate Meetup & Role-Specific Policy -->
+                        ${perspective === 'female' ? `
+                            <div class="card-right-section-box female-discretion-box">
+                                <div class="section-box-header">
+                                    <div class="section-box-title-wrap">
+                                        <span class="section-box-icon">🍸</span>
+                                        <div>
+                                            <strong class="section-box-title">Post-Entry Discretion & Karma</strong>
+                                            <span class="section-box-sub">Meet under venue security · Zero post-entry obligations</span>
+                                        </div>
+                                    </div>
+                                    <span class="section-box-badge purple">TOTAL AUTONOMY</span>
+                                </div>
+
+                                <div class="dual-action-grid">
+                                    <!-- Vibe Off Card -->
+                                    <div class="dual-action-card">
+                                        <div class="dac-top">
+                                            <span class="dac-tag">🍸 VIBE OFF OR NOT MATCHING?</span>
+                                            <h4 class="dac-title">Claim Drink & Disconnect</h4>
+                                            <p class="dac-desc">
+                                                Claim your ₹800 platform drink at the bar and explore on your own with 100% discretion.
+                                            </p>
+                                        </div>
+                                        <button class="dac-btn dac-btn-neutral" onclick="claimDrinkAndDisconnect('${c.name}')">
+                                            <span>Claim Drink & Disconnect</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Great Chemistry Card -->
+                                    <div class="dual-action-card lime-tint">
+                                        <div class="dac-top">
+                                            <span class="dac-tag lime">⭐ GREAT CHEMISTRY?</span>
+                                            <h4 class="dac-title">Bank +50 Social Karma</h4>
+                                            <p class="dac-desc">
+                                                Tap to vouch mutual vibe after the event and collect <strong>+50 KP</strong> for verified VIP guestlists.
+                                            </p>
+                                        </div>
+                                        <button class="dac-btn dac-btn-lime" onclick="approveVibeKarma('${c.name}')">
+                                            <span>⭐ Vibe Approved (+50 KP)</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ` : `
+                            <div class="card-right-section-box male-gate-box">
+                                <div class="section-box-header">
+                                    <div class="section-box-title-wrap">
+                                        <span class="section-box-icon">🛡️</span>
+                                        <div>
+                                            <strong class="section-box-title">Security Gate Meetup & Couple Entry</strong>
+                                            <span class="section-box-sub">Supervised couple entry · Zero post-entry obligations</span>
+                                        </div>
+                                    </div>
+                                    <span class="section-box-badge lime">${c.arrivalWindow || '10:15 PM'} ARRIVAL</span>
+                                </div>
+
+                                <div class="dual-action-grid">
+                                    <div class="dual-action-card lime-tint">
+                                        <div class="dac-top">
+                                            <span class="dac-tag lime">⚡ COUPLE-RATE DOOR ACCESS</span>
+                                            <h4 class="dac-title">Flat ₹999 Pass</h4>
+                                            <p class="dac-desc">
+                                                Save ~₹2,000 vs standard solo stag cover charges (₹2,500–₹3,000). Door entry confirmed with verified companion.
+                                            </p>
+                                        </div>
+                                        <div class="dac-btn-status lime">
+                                            <span>✓ ₹999 Stag Bypass Locked</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="dual-action-card">
+                                        <div class="dac-top">
+                                            <span class="dac-tag">📍 DESIGNATED MEETUP SPOT</span>
+                                            <h4 class="dac-title">${venueMatch.name}</h4>
+                                            <p class="dac-desc">
+                                                Meet at <strong>${venueMatch.meetupSpot}</strong> strictly under venue bouncers and CCTV supervision.
+                                            </p>
+                                        </div>
+                                        <div class="dac-btn-status neutral">
+                                            <span>🛡️ Security & Valet Desk</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `}
+
+                        <!-- Icebreaker Q&A -->
+                        <div class="card-right-section-box icebreaker-preview-box">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                                <span style="font-family: var(--font-mono); font-size: 9px; color: #a78bfa; font-weight: 800; letter-spacing: 1px;">
+                                    💬 DOOR ICEBREAKER
+                                </span>
+                                <span style="font-size: 10.5px; color: var(--text-muted); font-family: var(--font-mono);">Pre-arrival prompt</span>
+                            </div>
+                            <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 10px 14px;">
+                                <div style="font-size: 12.5px; font-weight: 800; color: #ffffff; margin-bottom: 3px;">"${c.icebreaker}"</div>
+                                <div style="font-size: 12px; color: #cbd5e1; font-style: italic; line-height: 1.4;">→ "${c.icebreakerAns}"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function nextCandidate() {
+            currentIndex++;
+            renderCandidate();
+        }
+
+        function prevCandidate() {
+            currentIndex--;
+            renderCandidate();
+        }
+
+        function onVenueChange(venue) {
+            selectedVenue = venue;
+            currentIndex = 0;
+            renderCandidate();
+        }
+
+        function handlePairButtonClick(candId) {
+            const candidates = getActiveCandidates();
+            const c = candidates[currentIndex];
+            if (!c) return;
+
+            if (isRequestPendingFor(c.id)) {
+                showToast(`Request already sent to ${c.name}. Awaiting her review.`);
+                return;
+            }
+
+            if (perspective === 'male') {
+                // Male sending companion request to female
+                let stored = JSON.parse(localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY) || '[]');
+                const newReq = {
+                    id: Date.now(),
+                    guyId: 201,
+                    guyName: "Rohan V.",
+                    guyAge: 24,
+                    guyArea: "Bandra West",
+                    guyAvatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+                    girlId: c.id,
+                    girlName: c.name,
+                    girlAvatar: c.avatar,
+                    venue: c.targetClub,
+                    synergy: c.synergyScore,
+                    punctuality: "99%",
+                    karma: "182 KP",
+                    note: `Heading to ${c.targetClub} tonight around ${c.arrivalWindow}. Would love to pair up for entry!`,
+                    timeAgo: "Just now",
+                    status: "pending"
+                };
+
+                stored.unshift(newReq);
+                localStorage.setItem(STORAGE_PENDING_REQUESTS_KEY, JSON.stringify(stored));
+                renderCandidate();
+                showToast(`⚡ Pair request sent to ${c.name}! She holds unilateral approval authority.`);
+            } else {
+                // Female member directly confirming / inviting companion
+                const pass = {
+                    partner1: "Zoya M.",
+                    partner2: c.name,
+                    partner1Avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+                    partner2Avatar: c.avatar,
+                    venue: c.targetClub || "Bastian At The Top",
+                    time: "10:15 PM Tonight",
+                    landmark: "Main Entrance Security Gate",
+                    status: "CONFIRMED",
+                    passCode: "NC-" + Math.floor(100000 + Math.random() * 900000)
+                };
+                localStorage.setItem(STORAGE_PASS_KEY, JSON.stringify(pass));
+                showSuccessModal();
+                showToast(`🎉 Companion pass created with ${c.name}! Chat unlocked.`);
+            }
+        }
+
+        function openIcebreakerModal(candId) {
+            currentCandIdForNote = candId;
+            const candidates = getActiveCandidates();
+            const c = candidates[currentIndex];
+            const modal = document.getElementById('icebreakerModal');
+            const textarea = document.getElementById('icebreakerTextInput');
+            if (textarea && c) {
+                textarea.value = `Hey ${c.name}! Heading to ${c.targetClub} around ${c.arrivalWindow}. Let's pair up for entry and grab the welcome drink!`;
+            }
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeIcebreakerModal() {
+            const modal = document.getElementById('icebreakerModal');
+            if (modal) modal.classList.add('hidden');
+            currentCandIdForNote = null;
+        }
+
+        function confirmSendIcebreaker() {
+            const candidates = getActiveCandidates();
+            const c = candidates[currentIndex];
+            const textarea = document.getElementById('icebreakerTextInput');
+            const noteText = textarea ? textarea.value.trim() : '';
+
+            if (c) {
+                let stored = JSON.parse(localStorage.getItem(STORAGE_PENDING_REQUESTS_KEY) || '[]');
+                stored.unshift({
+                    id: Date.now(),
+                    guyId: 201,
+                    guyName: "Rohan V.",
+                    guyAge: 24,
+                    guyArea: "Bandra West",
+                    guyAvatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80",
+                    girlId: c.id,
+                    girlName: c.name,
+                    girlAvatar: c.avatar,
+                    venue: c.targetClub,
+                    synergy: c.synergyScore,
+                    punctuality: "99%",
+                    karma: "182 KP",
+                    note: noteText || `Heading to ${c.targetClub} tonight!`,
+                    timeAgo: "Just now",
+                    status: "pending"
+                });
+                localStorage.setItem(STORAGE_PENDING_REQUESTS_KEY, JSON.stringify(stored));
+            }
+
+            closeIcebreakerModal();
+            renderCandidate();
+            showToast(`Note & pair request sent to ${c.name}! Discretion preserved.`);
+        }
+
+        function showSuccessModal() {
+            const modal = document.getElementById('pairSuccessModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('pairSuccessModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function claimDrinkAndDisconnect(name) {
+            showToast(`🍸 Complimentary welcome drink voucher unlocked! Disconnected discretely from ${name} with zero awkwardness.`);
+        }
+
+        function approveVibeKarma(name) {
+            showToast(`⭐ +50 Social Karma Points added to your profile! Verified great chemistry with ${name}.`);
+        }
+
+        function initPairmatch() {
+            initSampleRequests();
+            const activeUser = (typeof getAuthUser === 'function') ? getAuthUser() : null;
+            if (activeUser && activeUser.role === 'female') {
+                switchPerspective('female');
+            } else {
+                switchPerspective('male');
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPairmatch);
+        } else {
+            initPairmatch();
+        }
+    </script>
+</body>
+</html>

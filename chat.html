@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordination Chat Hub | NITE CREW Mumbai</title>
+    <meta name="description" content="Masked in-app coordination chat for NITE CREW squads and 1v1 entry partners. Zero personal contact info shared.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body class="dark-theme">
+
+    <div class="bg-pattern-layer"></div>
+    <div class="bg-glow-orb orb-purple"></div>
+    <div class="bg-glow-orb orb-lime"></div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="app-nav" id="appNav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span style="color: var(--neon-lime);">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events & Venues</a>
+                <a href="squads.html" class="nav-link">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link active">Coordination Chat</a>
+                <a href="pass.html" class="nav-link">Active Pass</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="squads.html" class="btn-pixel-primary">
+                    <span>⚡ Browse Squads</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container container" style="max-width: 1200px; padding-top: 80px; padding-bottom: 20px; min-height: unset;">
+        <!-- Page Header -->
+        <div class="page-header-box" style="margin-bottom: 12px; padding: 12px 20px; border-radius: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 4px;">
+                <span class="pixel-tag tag-neon-lime">MASKED IN-APP COORDINATION</span>
+                <span class="pixel-tag tag-neon-purple">NUMBERS & SOCIALS PROTECTED</span>
+            </div>
+            <h1 class="page-main-title" style="font-size: 24px; margin: 4px 0;">Coordination <span class="highlight-lime">Chat Hub</span></h1>
+            <p class="page-sub-title" style="font-size: 13px; margin: 0; line-height: 1.4;">
+                Coordinate meetups with your squad or 1v1 companion. Zero phone numbers exchanged. All initial meetups happen exclusively at bright, public landmarks.
+            </p>
+        </div>
+
+        <!-- Connected Chat Layout (Matching User Image 3 & 4 Nina Skrbic Reference) -->
+        <div class="connected-chat-layout">
+            <!-- Left Panel: Search, Let's Stay Connected, Stories & Threads -->
+            <div class="chat-left-panel">
+                <div class="chat-left-header">
+                    <div class="chat-search-pill">
+                        <span>🔍</span>
+                        <input type="text" id="chatSearchInput" placeholder="Search..." oninput="handleSearch(this.value)">
+                    </div>
+
+                    <h2 class="chat-page-heading">Let's Stay<br>Connected</h2>
+
+                    <!-- Story Avatars Scroll Row (Image 4 Left Screen Match) -->
+                    <div class="chat-stories-scroll-row" id="storiesRow">
+                        <div class="chat-story-node" onclick="showToast('Tap a member below to view conversation')">
+                            <div class="story-avatar-wrap add-slot">
+                                <span>+</span>
+                            </div>
+                            <span>Add</span>
+                        </div>
+                        <!-- Story nodes populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Conversation Threads List -->
+                <div class="chat-threads-list" id="chatThreadsList">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </div>
+
+            <!-- Right Panel: Conversation Stream / Talk Flow Live Room -->
+            <div class="chat-main-window">
+                <!-- Topbar with Active Contact Info & Actions -->
+                <div class="chat-room-topbar" id="chatRoomTopbar">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- VIEW MODE A: Nina Skrbic Style Modern Text Messages Feed -->
+                <div id="textChatView" class="chat-text-feed-view" style="display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; overflow: hidden;">
+                    <!-- Message Canvas with Soft Rounded Bubbles -->
+                    <div class="chat-messages-canvas" id="chatMessagesCanvas">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Quick Location & Timing Chips Row -->
+                    <div style="padding: 4px 20px 6px; flex-shrink: 0; background: #0c0c14;">
+                        <div class="quick-msg-chips-row" style="margin-bottom: 0;">
+                            <button class="chip-btn" type="button" onclick="sendQuickMessage('🚗 Heading to the valet desk now!')">🚗 Heading to valet</button>
+                            <button class="chip-btn" type="button" onclick="sendQuickMessage('📍 Reached the meetup landmark')">📍 Reached landmark</button>
+                            <button class="chip-btn" type="button" onclick="sendQuickMessage('🧥 Wearing dark jacket & sneakers')">🧥 Wearing dark jacket</button>
+                            <button class="chip-btn" type="button" onclick="sendQuickMessage('🎟️ Ready to walk into the gate!')">🎟️ Ready to enter</button>
+                        </div>
+                    </div>
+
+                    <!-- Nina Skrbic Style Rounded Bottom Message Input Bar -->
+                    <div class="chat-bottom-dock">
+                        <form class="chat-input-pill-box" onsubmit="handleChatSubmit(event)">
+                            <input type="text" id="chatMainInput" class="chat-text-field" placeholder="Type a message..." autocomplete="off">
+                            <button type="submit" class="btn-send-heart" title="Send Message">
+                                <span>➤</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- VIEW MODE B: Live Audio Squad Room (Talk Flow Image 1 Match) -->
+                <div id="liveRoomView" class="squad-room-view hidden" style="padding: 24px; display: flex; flex-direction: column; flex: 1; justify-content: space-between;">
+                    <div class="room-header-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 18px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span class="pixel-tag tag-neon-lime" style="font-size: 8px;">● LIVE SQUAD AUDIO LOUNGE</span>
+                            <h3 id="roomChannelTitle" style="font-family: var(--font-heading); font-size: 18px; font-weight: 900; margin-top: 4px;">Bandra Techno Collective</h3>
+                            <p id="roomVenueTitle" style="font-size: 12px; color: var(--text-silver); margin-top: 2px;">📍 Bastian At The Top Tonight · 4 Members Connected</p>
+                        </div>
+                        <button class="btn-pixel-ghost" onclick="switchChatMode('text')" style="font-size: 11px; padding: 6px 12px;">
+                            Back to Text 💬
+                        </button>
+                    </div>
+
+                    <!-- 4-6 Member Stage (Image 1 Match) -->
+                    <div class="room-speakers-grid" id="roomSpeakersGrid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 30px 0;">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+
+                    <!-- Bottom Controls: Emojis & Mic -->
+                    <div style="background: rgba(15, 15, 24, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 14px 20px;">
+                        <!-- Reaction Emojis Bar (Image 1 Bottom Row) -->
+                        <div class="room-reactions-bar" style="display: flex; justify-content: center; gap: 12px; margin-bottom: 14px;">
+                            <button class="reaction-emoji-btn" onclick="popEmoji('🔥', event)">🔥</button>
+                            <button class="reaction-emoji-btn" onclick="popEmoji('🥂', event)">🥂</button>
+                            <button class="reaction-emoji-btn" onclick="popEmoji('⚡', event)">⚡</button>
+                            <button class="reaction-emoji-btn" onclick="popEmoji('🎧', event)">🎧</button>
+                            <button class="reaction-emoji-btn" onclick="popEmoji('👑', event)">👑</button>
+                            <button class="reaction-emoji-btn" onclick="popEmoji('❤️', event)">❤️</button>
+                        </div>
+
+                        <!-- Control Buttons -->
+                        <div class="room-controls-row" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+                            <button class="btn-room-ctrl btn-ctrl-hand" onclick="showToast('✋ Hand raised! Squad host notified.')" title="Raise Hand" style="width: 48px; height: 48px; border-radius: 50%; background: #1f1f2e; border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 18px; cursor: pointer;">✋</button>
+                            
+                            <button class="btn-room-ctrl btn-ctrl-mic" id="btnMicToggle" onclick="toggleMic()" title="Mute/Unmute Mic" style="width: 58px; height: 58px; border-radius: 50%; background: var(--neon-lime); border: none; color: #000; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(204, 255, 0, 0.4);">🎙️</button>
+                            
+                            <button class="btn-room-ctrl btn-ctrl-leave" onclick="switchChatMode('text')" title="Switch to Text" style="width: 48px; height: 48px; border-radius: 50%; background: #2a1515; border: 1px solid #ef4444; color: #ef4444; font-size: 18px; cursor: pointer;">✕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="chat.html">Coordination Chat</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI ZONES</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        let activeChannelId = "chan-pair-1";
+        let currentChatMode = "text"; // 'text' or 'room'
+        let isMicMuted = false;
+        let searchQuery = "";
+
+        // Check if URL specified channel parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('channel')) {
+            activeChannelId = urlParams.get('channel');
+        }
+
+        // Render Stories Row (Image 4 Left Screen Match)
+        function renderStoriesRow() {
+            const container = document.getElementById('storiesRow');
+            if (!container) return;
+
+            const stories = [
+                { id: "chan-pair-1", name: "Zoya", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80", live: true },
+                { id: "chan-james", name: "James", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80", live: true },
+                { id: "chan-adison", name: "Adison", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80", live: true },
+                { id: "chan-ashlynn", name: "Ashlynn", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80", live: false },
+                { id: "chan-tatiana", name: "Tatiana", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80", live: false },
+                { id: "chan-squad-1", name: "Aarav", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80", live: true },
+                { id: "chan-squad-2", name: "Dev", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80", live: false }
+            ];
+
+            const html = stories.map(s => `
+                <div class="chat-story-node" onclick="selectChannel('${s.id}')">
+                    <div class="story-avatar-wrap ${s.live ? 'has-update' : ''}">
+                        <img src="${s.avatar}" alt="${s.name}">
+                    </div>
+                    <span>${s.name}</span>
+                </div>
+            `).join('');
+
+            // Keep the + Add button at start
+            container.innerHTML = `
+                <div class="chat-story-node" onclick="showToast('Tap any member to start coordination')">
+                    <div class="story-avatar-wrap add-slot">
+                        <span>+</span>
+                    </div>
+                    <span>Add</span>
+                </div>
+                ${html}
+            `;
+        }
+
+        function handleSearch(q) {
+            searchQuery = q.toLowerCase().trim();
+            renderThreadsList();
+        }
+
+        function renderThreadsList() {
+            const list = document.getElementById('chatThreadsList');
+            if (!list) return;
+
+            let channels = CHANNELS_DATA;
+            if (searchQuery) {
+                channels = channels.filter(ch => 
+                    ch.name.toLowerCase().includes(searchQuery) ||
+                    (ch.role && ch.role.toLowerCase().includes(searchQuery)) ||
+                    (ch.venue && ch.venue.toLowerCase().includes(searchQuery))
+                );
+            }
+
+            list.innerHTML = channels.map(ch => {
+                const isActive = (ch.id === activeChannelId);
+                const lastMsg = ch.messages && ch.messages.length > 0 ? ch.messages[ch.messages.length - 1] : null;
+                const snippet = lastMsg ? `${lastMsg.sender.split(' ')[0]}: ${lastMsg.text}` : 'No messages yet';
+                const time = lastMsg ? lastMsg.time : '';
+
+                return `
+                    <div class="chat-thread-card ${isActive ? 'active' : ''}" onclick="selectChannel('${ch.id}')">
+                        <div class="thread-avatar-box">
+                            <img src="${ch.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" alt="${ch.name}">
+                            ${ch.online ? '<div class="thread-online-dot"></div>' : ''}
+                        </div>
+                        <div class="thread-content-box">
+                            <div class="thread-top-line">
+                                <h4 class="thread-name">${ch.name}</h4>
+                                <span class="thread-time">${time}</span>
+                            </div>
+                            <p class="thread-snippet">${snippet}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderActiveChannel() {
+            const ch = CHANNELS_DATA.find(c => c.id === activeChannelId) || CHANNELS_DATA[0];
+            const topbar = document.getElementById('chatRoomTopbar');
+            const canvas = document.getElementById('chatMessagesCanvas');
+
+            if (topbar) {
+                topbar.innerHTML = `
+                    <div class="chat-active-user">
+                        <div style="position: relative;">
+                            <img src="${ch.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" class="chat-active-avatar" alt="${ch.name}">
+                            ${ch.online ? '<div class="thread-online-dot" style="bottom: 2px; right: 2px;"></div>' : ''}
+                        </div>
+                        <div>
+                            <h3>${ch.name}</h3>
+                            <span>● ${ch.statusBadge || 'Online'} · ${ch.venue || 'Bastian At The Top'}</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-top-actions">
+                        <button class="btn-top-action" onclick="switchChatMode(currentChatMode === 'room' ? 'text' : 'room')" title="${currentChatMode === 'room' ? 'Switch to Text Feed' : 'Launch Squad Audio Lounge'}">
+                            ${currentChatMode === 'room' ? '💬' : '🎙️'}
+                        </button>
+                        <a href="pass.html" class="btn-top-action" title="View Digital Entry Pass" style="text-decoration: none;">
+                            🎟️
+                        </a>
+                    </div>
+                `;
+            }
+
+            if (canvas) {
+                canvas.innerHTML = ch.messages.map(m => {
+                    const isMe = (m.sender === "Rohan V." || m.sender === "You");
+                    return `
+                        <div class="chat-bubble-unit ${isMe ? 'outgoing' : 'incoming'}">
+                            <div class="bubble-bubble">
+                                ${!isMe && ch.type === 'squad' ? `<div style="font-size: 11px; font-weight: 800; color: var(--neon-lime); margin-bottom: 3px;">${m.sender}</div>` : ''}
+                                ${m.text}
+                            </div>
+                            <div class="bubble-timestamp">${m.time}</div>
+                        </div>
+                    `;
+                }).join('');
+
+                canvas.scrollTop = canvas.scrollHeight;
+            }
+
+            const input = document.getElementById('chatMainInput');
+            if (input) {
+                const targetName = ch.name.split(' ')[0] || ch.name;
+                input.placeholder = `Type a message to ${targetName}...`;
+            }
+        }
+
+        function selectChannel(chanId) {
+            activeChannelId = chanId;
+            renderThreadsList();
+            renderActiveChannel();
+            if (currentChatMode === 'room') {
+                renderLiveRoom();
+            }
+            const input = document.getElementById('chatMainInput');
+            if (input) input.focus();
+        }
+
+        function switchChatMode(mode) {
+            currentChatMode = mode;
+            const textView = document.getElementById('textChatView');
+            const roomView = document.getElementById('liveRoomView');
+            if (mode === 'room') {
+                textView.classList.add('hidden');
+                roomView.classList.remove('hidden');
+                renderLiveRoom();
+            } else {
+                roomView.classList.add('hidden');
+                textView.classList.remove('hidden');
+            }
+            renderActiveChannel();
+        }
+
+        function toggleMic() {
+            isMicMuted = !isMicMuted;
+            const btn = document.getElementById('btnMicToggle');
+            if (btn) {
+                if (isMicMuted) {
+                    btn.style.background = '#333';
+                    btn.style.color = '#ff4444';
+                    btn.innerHTML = '🔇';
+                    showToast('Microphone muted.');
+                } else {
+                    btn.style.background = 'var(--neon-lime)';
+                    btn.style.color = '#000';
+                    btn.innerHTML = '🎙️';
+                    showToast('Microphone live.');
+                }
+            }
+        }
+
+        function popEmoji(emoji, e) {
+            const el = document.createElement('div');
+            el.className = 'floating-emoji';
+            el.textContent = emoji;
+            el.style.left = (e.clientX || 200) + 'px';
+            el.style.top = (e.clientY || 400) + 'px';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1800);
+        }
+
+        function renderLiveRoom() {
+            const ch = CHANNELS_DATA.find(c => c.id === activeChannelId) || CHANNELS_DATA[0];
+            const title = document.getElementById('roomChannelTitle');
+            const venue = document.getElementById('roomVenueTitle');
+            const grid = document.getElementById('roomSpeakersGrid');
+
+            if (title) title.textContent = ch.name;
+            if (venue) venue.textContent = `📍 ${ch.venue} · Live Squad Audio Coordination`;
+
+            if (grid) {
+                const members = [
+                    { name: "Aarav K.", role: "Squad Host 👑", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80", speaking: true },
+                    { name: "Zoya M.", role: "Vibe Scout 🦋", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", speaking: false },
+                    { name: "Dev S.", role: "Music Lead 🎧", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80", speaking: true },
+                    { name: "You (Rohan)", role: "Confirmed ⚡", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80", speaking: false }
+                ];
+
+                grid.innerHTML = members.map(m => `
+                    <div class="speaker-seat" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <div class="speaker-avatar-wrap" style="position: relative; width: 68px; height: 68px; margin-bottom: 8px;">
+                            ${m.speaking ? '<div class="speaker-speaking-ring" style="position: absolute; inset: -4px; border: 2px solid var(--neon-lime); border-radius: 50%; animation: pulse 1.5s infinite;"></div>' : ''}
+                            <img src="${m.avatar}" alt="${m.name}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" />
+                        </div>
+                        <h4 style="font-family: var(--font-heading); font-size: 13px; font-weight: 800; color: #fff;">${m.name}</h4>
+                        <span class="seat-role" style="font-family: var(--font-mono); font-size: 9px; color: var(--neon-lime); margin-top: 2px;">${m.role}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function handleChatSubmit(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const input = document.getElementById('chatMainInput');
+            if (!input || !input.value.trim()) return;
+            const text = input.value.trim();
+            input.value = '';
+            input.focus();
+
+            const ch = CHANNELS_DATA.find(c => c.id === activeChannelId);
+            if (!ch) return;
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            ch.messages.push({
+                sender: "You",
+                avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80",
+                time: timeStr,
+                text: text
+            });
+
+            renderActiveChannel();
+            renderThreadsList();
+
+            // Simulate realistic reply after 1.2s
+            setTimeout(() => {
+                const replies = [
+                    "Awesome, see you outside the entrance!",
+                    "Got it, heading down in 5 mins.",
+                    "Sounds good, I'm by the valet sign.",
+                    "Perfect! Ready to walk into the gate whenever you arrive 🥂"
+                ];
+                const replyText = replies[Math.floor(Math.random() * replies.length)];
+                const otherSender = ch.name.split(' ')[0] || "Squadmate";
+                const otherAvatar = ch.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80";
+
+                ch.messages.push({
+                    sender: otherSender,
+                    avatar: otherAvatar,
+                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                    text: replyText
+                });
+
+                renderActiveChannel();
+                renderThreadsList();
+            }, 1200);
+        }
+
+        function sendQuickMessage(text) {
+            const input = document.getElementById('chatMainInput');
+            if (input) {
+                input.value = text;
+                handleChatSubmit(new Event('submit'));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStoriesRow();
+            renderThreadsList();
+            renderActiveChannel();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Operations & Analytics Hub | NITE CREW Mumbai</title>
+    <meta name="description" content="NITE CREW Mumbai Admin Operations Hub. Live club performance, crowd synergy analytics, dynamic venue creation, and safety audit management.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body style="background: #08080d;">
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo" aria-label="NITE CREW Home">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span style="color: #00F0FF;">OPS</span></span>
+                        <span class="brand-sub" style="color: #00F0FF;">EXECUTIVE HQ</span>
+                    </div>
+                </a>
+                <div class="location-pill">
+                    <span class="live-dot" style="background: #00F0FF; box-shadow: 0 0 8px #00F0FF;" aria-hidden="true"></span>
+                    <span class="city-name">Mumbai Command Center</span>
+                </div>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events & Venues</a>
+                <a href="squads.html" class="nav-link">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link">1v1 PairMatch</a>
+                <a href="admin.html" class="nav-link active" style="border-color: #00F0FF !important; color: #00F0FF !important;">⚙️ Admin Hub</a>
+            </nav>
+
+            <div class="nav-right">
+                <!-- Dynamically populated by common.js with Admin Persona Badge -->
+            </div>
+        </div>
+    </header>
+
+    <!-- ADMIN OPERATIONS DASHBOARD -->
+    <main class="page-container container">
+        <!-- Live Operations Status Strip -->
+        <div class="admin-header-status-strip">
+            <div>
+                <span class="pixel-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF; border: 1px solid rgba(0, 240, 255, 0.3); font-size: 9px; letter-spacing: 1.5px;">
+                    LIVE MUMBAI NIGHTLIFE OPERATIONS
+                </span>
+                <h1 style="font-family: var(--font-heading); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; color: #fff; margin-top: 6px;">
+                    EXECUTIVE <span style="color: #00F0FF;">OPERATIONS & ANALYTICS</span>
+                </h1>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <div class="admin-live-clock">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #00F0FF; display: inline-block; box-shadow: 0 0 8px #00F0FF;"></span>
+                    <span id="liveClockDisplay">IST 12:45:30 AM · SATURDAY PEAK</span>
+                </div>
+                <button class="btn-admin-add-event" onclick="openAddVenueModal()">
+                    <span>+ ADD NEW CLUB / EVENT</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- KPI Metrics Grid -->
+        <div class="admin-kpi-grid">
+            <div class="admin-kpi-card cyan">
+                <span class="kpi-title">ACTIVE NIGHTLIFERS TONIGHT</span>
+                <div class="kpi-value">1,842</div>
+                <span class="kpi-delta" style="color: #00F0FF;">↑ +28% vs last Saturday</span>
+            </div>
+
+            <div class="admin-kpi-card">
+                <span class="kpi-title">SQUADS FORMED (4–6)</span>
+                <div class="kpi-value" id="kpiSquadsCount">142 Groups</div>
+                <span class="kpi-delta">⚡ Least-Misery Avg: 91.4% Synergy</span>
+            </div>
+
+            <div class="admin-kpi-card purple">
+                <span class="kpi-title">1V1 MUTUAL MATCH CONVERSION</span>
+                <div class="kpi-value">89.4%</div>
+                <span class="kpi-delta" style="color: #a78bfa;">👑 Women Approval Rate: 78.5%</span>
+            </div>
+
+            <div class="admin-kpi-card yellow">
+                <span class="kpi-title">PARTNER VENUES SYNCED</span>
+                <div class="kpi-value" id="kpiVenuesCount">38 Clubs</div>
+                <span class="kpi-delta" style="color: #ffd700;">★ 4.6 Avg Rating · 5 Zones</span>
+            </div>
+
+            <div class="admin-kpi-card">
+                <span class="kpi-title">SAFETY AUDIT INCIDENTS</span>
+                <div class="kpi-value" style="color: var(--neon-lime);">0.00%</div>
+                <span class="kpi-delta">🛡️ 100% DigiLocker ID Verified</span>
+            </div>
+        </div>
+
+        <!-- Controls & Navigation Tabs -->
+        <div class="admin-controls-bar">
+            <div class="admin-tabs-list">
+                <button class="admin-tab-btn active" id="tabBtnClubs" onclick="switchAdminTab('clubs')">
+                    🍸 Club Performance (<span id="tabClubCount">38</span>)
+                </button>
+                <button class="admin-tab-btn" id="tabBtnSynergy" onclick="switchAdminTab('synergy')">
+                    👥 Crowd Synergy Patterns
+                </button>
+                <button class="admin-tab-btn" id="tabBtnSafety" onclick="switchAdminTab('safety')">
+                    🛡️ Safety Moderation Queue
+                </button>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <input type="text" id="adminSearchInput" placeholder="Filter clubs, zones, or music..." class="login-native-input" style="height: 38px; width: 240px; font-size: 12px;" oninput="renderAdminVenuesTable()">
+                <button class="btn-pixel-primary" onclick="exportNightlyReport()" style="padding: 8px 16px; font-size: 11px;">
+                    <span>📥 Export CSV</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 1: CLUB PERFORMANCE & LIVE GUESTLIST TABLE -->
+        <section id="sectionClubs" class="admin-tab-content">
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>VENUE & AREA</th>
+                            <th>DISTRICT</th>
+                            <th>RATING</th>
+                            <th>MUSIC GENRE</th>
+                            <th>AVG SPEND</th>
+                            <th>TONIGHT'S SQUADS</th>
+                            <th>GUESTLIST STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminVenuesTableBody">
+                        <!-- Populated dynamically by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TAB 2: CROWD SYNERGY & PATTERNS -->
+        <section id="sectionSynergy" class="admin-tab-content hidden">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <!-- Pattern 1: Music Genre Distribution -->
+                <div class="admin-kpi-card" style="padding: 24px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 16px; color: #fff; margin-bottom: 16px;">
+                        🎵 Music Genre Preference Breakdown
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px; font-size: 12.5px;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span>Melodic Techno & Underground</span>
+                                <strong style="color: var(--neon-lime);">38% (698 users)</strong>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 100px; overflow: hidden;">
+                                <div style="background: var(--neon-lime); width: 38%; height: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span>Afro House & Melodic</span>
+                                <strong style="color: #a78bfa;">26% (478 users)</strong>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 100px; overflow: hidden;">
+                                <div style="background: #a78bfa; width: 26%; height: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span>Commercial Hip-Hop & Top 40</span>
+                                <strong style="color: #00F0FF;">21% (386 users)</strong>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 100px; overflow: hidden;">
+                                <div style="background: #00F0FF; width: 21%; height: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span>Retro Pop & Bollywood Singalongs</span>
+                                <strong style="color: #ffd700;">15% (280 users)</strong>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 100px; overflow: hidden;">
+                                <div style="background: #ffd700; width: 15%; height: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pattern 2: Group Size & Least Misery Model -->
+                <div class="admin-kpi-card" style="padding: 24px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 16px; color: #fff; margin-bottom: 16px;">
+                        ⚖️ Group Size & Least-Misery Balance
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13px;">
+                        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 12px;">
+                            <strong>Optimal Squad Size: 4–5 Members</strong>
+                            <p style="color: #94a3b8; font-size: 11.5px; margin-top: 4px; line-height: 1.4;">
+                                Data shows groups of 4 have a 94% retention rate and 0 dropouts at meetup cafes.
+                            </p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 12px;">
+                            <strong>Peak Arrival Window: 10:15 PM – 10:45 PM</strong>
+                            <p style="color: #94a3b8; font-size: 11.5px; margin-top: 4px; line-height: 1.4;">
+                                82% of squads meet at the designated coffee or valet landmark 30 mins prior to door cut-off.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: SAFETY & MODERATION QUEUE -->
+        <section id="sectionSafety" class="admin-tab-content hidden">
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>CASE ID</th>
+                            <th>REPORT TYPE</th>
+                            <th>REPORTER & TARGET</th>
+                            <th>VENUE CONTEXT</th>
+                            <th>TIMESTAMP</th>
+                            <th>STATUS</th>
+                            <th>MODERATION ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#SAFE-2026-89</td>
+                            <td><span style="color: #ffd700; font-weight: 700;">Late Arrival Notice</span></td>
+                            <td>Zoya M. → Candidate Dev S.</td>
+                            <td>Bastian At The Top (Valet Lobby)</td>
+                            <td>10:15 PM</td>
+                            <td><span class="status-badge-open">Resolved On-Site</span></td>
+                            <td>
+                                <button class="btn-pixel-ghost" style="padding: 4px 10px; font-size: 11px;" onclick="showToast('Candidate arrived and checked in.')">View Log</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#SAFE-2026-92</td>
+                            <td><span style="color: var(--neon-lime); font-weight: 700;">Dress Code Verification</span></td>
+                            <td>Host Aarav K. → Member Ananya</td>
+                            <td>antiSOCIAL (Todi Mill)</td>
+                            <td>10:05 PM</td>
+                            <td><span class="status-badge-open">Verified Safe</span></td>
+                            <td>
+                                <button class="btn-pixel-ghost" style="padding: 4px 10px; font-size: 11px;" onclick="showToast('All dress code credentials approved.')">Pass</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#SAFE-2026-95</td>
+                            <td><span style="color: #00F0FF; font-weight: 700;">DigiLocker ID Re-Audit</span></td>
+                            <td>System Automated Audit</td>
+                            <td>Toy Room Mumbai (VIP)</td>
+                            <td>9:45 PM</td>
+                            <td><span class="status-badge-open">100% Match</span></td>
+                            <td>
+                                <button class="btn-pixel-ghost" style="padding: 4px 10px; font-size: 11px;" onclick="showToast('DigiLocker cryptographic seal confirmed.')">Audit Pass ✓</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL: ADD NEW CLUB / POP-UP EVENT -->
+    <div class="modal-backdrop hidden" id="addVenueModal">
+        <div class="admin-modal-card">
+            <button class="modal-close-btn" onclick="closeAddVenueModal()" aria-label="Close modal">✕</button>
+            <span class="pixel-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF; border: 1px solid rgba(0, 240, 255, 0.3); font-size: 9px; letter-spacing: 1.5px;">
+                DATABASE EXPANSION
+            </span>
+            <h2 style="font-family: var(--font-heading); font-size: 22px; font-weight: 900; color: #fff; margin-top: 6px;">
+                REGISTER <span style="color: #00F0FF;">NEW CLUB / EVENT</span>
+            </h2>
+            <p style="font-size: 13px; color: #94a3b8; margin-top: 4px;">
+                Add an official venue or pop-up party. It will be immediately published to live listings across the website and saved in local storage.
+            </p>
+
+            <form id="addVenueForm" onsubmit="handleCreateVenue(event)">
+                <div class="admin-form-grid">
+                    <div class="full-col">
+                        <label class="kpi-title">CLUB / VENUE NAME *</label>
+                        <input type="text" id="newVenueName" class="login-native-input" placeholder="e.g. Club Pandora Rooftop" required>
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">MUMBAI DISTRICT / ZONE *</label>
+                        <select id="newVenueZone" class="login-native-input" style="height: 44px;" required>
+                            <option value="bandra">Bandra & Khar</option>
+                            <option value="lower-parel">Lower Parel & Worli</option>
+                            <option value="juhu-bkc">Juhu & BKC</option>
+                            <option value="andheri">Andheri West & Suburbs</option>
+                            <option value="south-mumbai">South Mumbai / Colaba</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">SPECIFIC AREA / NEIGHBORHOOD *</label>
+                        <input type="text" id="newVenueArea" class="login-native-input" placeholder="e.g. Pali Hill, Bandra West" required>
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">GOOGLE / ZOMATO RATING *</label>
+                        <input type="number" step="0.1" min="3.0" max="5.0" id="newVenueRating" class="login-native-input" value="4.6" required>
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">TOTAL REVIEWS COUNT</label>
+                        <input type="text" id="newVenueReviews" class="login-native-input" value="2.1k+ reviews">
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">PRIMARY MUSIC GENRE *</label>
+                        <input type="text" id="newVenueGenre" class="login-native-input" placeholder="e.g. Melodic Techno & House" required>
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">ESTIMATED SPEND BRACKET (₹)</label>
+                        <input type="text" id="newVenueSpend" class="login-native-input" placeholder="e.g. ₹1,500–₹2,500" value="₹1,500–₹2,500">
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">DRESS CODE *</label>
+                        <input type="text" id="newVenueDress" class="login-native-input" placeholder="e.g. Smart Chic / Closed Shoes" value="Smart Chic">
+                    </div>
+
+                    <div>
+                        <label class="kpi-title">DESIGNATED MEETUP LANDMARK *</label>
+                        <input type="text" id="newVenueMeetup" class="login-native-input" placeholder="e.g. Ground Floor Valet Lobby" required>
+                    </div>
+
+                    <div class="full-col">
+                        <label class="kpi-title">VENUE COVER PHOTO URL</label>
+                        <input type="url" id="newVenuePhoto" class="login-native-input" placeholder="https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=80">
+                    </div>
+
+                    <div class="full-col">
+                        <label class="kpi-title">ATMOSPHERE & VIBE DESCRIPTION *</label>
+                        <textarea id="newVenueDesc" class="login-native-input" style="height: 70px; padding-top: 10px;" placeholder="Describe the energy, sound system, and weekend crowd..." required></textarea>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <button type="button" class="btn-pixel-ghost" onclick="closeAddVenueModal()" style="flex: 1;">Cancel</button>
+                    <button type="submit" class="btn-admin-add-event" style="flex: 2; justify-content: center;">
+                        <span>PUBLISH & SYNC TO WEBSITE 🚀</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        // Check session role
+        const currentUser = getAuthUser();
+        if (currentUser.role !== 'admin') {
+            // Auto elevate or warn for demo review
+            showToast("Logged in as Admin (HQ Operations) for portfolio inspection.");
+        }
+
+        // Live Clock
+        function updateLiveClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const clockEl = document.getElementById('liveClockDisplay');
+            if (clockEl) {
+                clockEl.textContent = `IST ${timeStr} · LIVE CLUBS ACTIVE`;
+            }
+        }
+        setInterval(updateLiveClock, 1000);
+        updateLiveClock();
+
+        // Switch Admin Tabs
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.add('hidden'));
+
+            if (tabName === 'clubs') {
+                document.getElementById('tabBtnClubs').classList.add('active');
+                document.getElementById('sectionClubs').classList.remove('hidden');
+            } else if (tabName === 'synergy') {
+                document.getElementById('tabBtnSynergy').classList.add('active');
+                document.getElementById('sectionSynergy').classList.remove('hidden');
+            } else if (tabName === 'safety') {
+                document.getElementById('tabBtnSafety').classList.add('active');
+                document.getElementById('sectionSafety').classList.remove('hidden');
+            }
+        }
+
+        // Render Admin Venues Table
+        function renderAdminVenuesTable() {
+            const tbody = document.getElementById('adminVenuesTableBody');
+            const search = (document.getElementById('adminSearchInput')?.value || '').toLowerCase().trim();
+            if (!tbody) return;
+
+            const clubs = MUMBAI_CLUBS.filter(c => {
+                if (!search) return true;
+                return c.name.toLowerCase().includes(search) || 
+                       c.area.toLowerCase().includes(search) || 
+                       c.genre.toLowerCase().includes(search) ||
+                       c.zone.toLowerCase().includes(search);
+            });
+
+            // Update Counts
+            document.getElementById('tabClubCount').textContent = clubs.length;
+            document.getElementById('kpiVenuesCount').textContent = `${MUMBAI_CLUBS.length} Clubs`;
+
+            tbody.innerHTML = clubs.map((c, idx) => {
+                const squadsCount = 18 + (c.id * 3) % 15;
+                const isGuestlistOpen = (idx % 4 !== 0);
+                return `
+                    <tr>
+                        <td>
+                            <strong style="color: #fff; font-size: 14px;">${c.name}</strong><br>
+                            <small style="color: #94a3b8;">📍 ${c.area}</small>
+                        </td>
+                        <td>
+                            <span class="pixel-tag" style="font-size: 9px; padding: 3px 8px;">${c.zone.toUpperCase().replace('-', ' ')}</span>
+                        </td>
+                        <td>
+                            <span style="color: #ffd700; font-weight: 800;">★ ${c.rating || '4.5'}</span>
+                            <small style="color: #64748b; font-size: 10px;">(${c.reviews || '2k+'})</small>
+                        </td>
+                        <td>
+                            <span style="font-size: 12px; color: #cbd5e1;">${c.genre}</span>
+                        </td>
+                        <td>
+                            <span style="color: var(--neon-lime); font-size: 12px; font-weight: 700;">${c.avgSpend || '₹1,500–₹2,500'}</span>
+                        </td>
+                        <td>
+                            <strong style="color: #fff;">${squadsCount} Squads</strong><br>
+                            <small style="color: #a78bfa;">${squadsCount * 4} attendees</small>
+                        </td>
+                        <td>
+                            <span class="${isGuestlistOpen ? 'status-badge-open' : 'status-badge-vip'}" id="statusBadge-${c.id}">
+                                ${isGuestlistOpen ? '● GUESTLIST OPEN' : '★ TABLE ONLY'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn-pixel-ghost" style="padding: 4px 8px; font-size: 11px;" onclick="toggleClubStatus(${c.id})">
+                                Toggle
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function toggleClubStatus(id) {
+            const badge = document.getElementById(`statusBadge-${id}`);
+            if (!badge) return;
+            const isOpen = badge.textContent.includes('OPEN');
+            if (isOpen) {
+                badge.className = 'status-badge-vip';
+                badge.textContent = '★ TABLE ONLY';
+                showToast('Venue status updated to Table Only.');
+            } else {
+                badge.className = 'status-badge-open';
+                badge.textContent = '● GUESTLIST OPEN';
+                showToast('Venue guestlist unlocked for verified squads.');
+            }
+        }
+
+        // Modal Controls
+        function openAddVenueModal() {
+            document.getElementById('addVenueModal').classList.remove('hidden');
+        }
+        function closeAddVenueModal() {
+            document.getElementById('addVenueModal').classList.add('hidden');
+        }
+
+        // Handle Add Venue Form
+        function handleCreateVenue(e) {
+            e.preventDefault();
+            const name = document.getElementById('newVenueName').value.trim();
+            const zone = document.getElementById('newVenueZone').value;
+            const area = document.getElementById('newVenueArea').value.trim();
+            const rating = parseFloat(document.getElementById('newVenueRating').value) || 4.5;
+            const reviews = document.getElementById('newVenueReviews').value.trim() || '1.5k+';
+            const genre = document.getElementById('newVenueGenre').value.trim();
+            const avgSpend = document.getElementById('newVenueSpend').value.trim() || '₹1,500–₹2,500';
+            const dressCode = document.getElementById('newVenueDress').value.trim();
+            const meetupSpot = document.getElementById('newVenueMeetup').value.trim();
+            const photo = document.getElementById('newVenuePhoto').value.trim();
+            const description = document.getElementById('newVenueDesc').value.trim();
+
+            const newId = 100 + MUMBAI_CLUBS.length + 1;
+            const newClub = {
+                id: newId,
+                name,
+                zone,
+                area,
+                rating,
+                reviews,
+                genre,
+                musicVibe: genre,
+                avgSpend,
+                dressCode,
+                meetupSpot,
+                photo,
+                description,
+                tag: "Verified Nightclub & Social"
+            };
+
+            // Save to localStorage
+            try {
+                const existing = JSON.parse(localStorage.getItem('nitecrew_custom_clubs') || '[]');
+                existing.unshift(newClub);
+                localStorage.setItem('nitecrew_custom_clubs', JSON.stringify(existing));
+            } catch(err) {
+                console.error(err);
+            }
+
+            // Add to active memory
+            MUMBAI_CLUBS.unshift(newClub);
+
+            closeAddVenueModal();
+            renderAdminVenuesTable();
+            showToast(`🎉 Published ${name}! Now live on events page and directory.`);
+        }
+
+        function exportNightlyReport() {
+            showToast("Generating CSV report for tonight's 38 partner clubs...");
+            setTimeout(() => {
+                showToast("✓ Report downloaded: nitecrew_mumbai_nightly_analytics.csv");
+            }, 800);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAdminVenuesTable();
+        });
+    </script>
+</body>
+</html>

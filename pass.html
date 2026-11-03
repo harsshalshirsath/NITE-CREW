@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Digital Pass | NITE CREW Mumbai</title>
+    <meta name="description" content="Verified digital entrance pass for NITE CREW mutual companions and squads.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body class="dark-theme">
+
+    <div class="bg-pattern-layer"></div>
+    <div class="bg-glow-orb orb-purple"></div>
+    <div class="bg-glow-orb orb-lime"></div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="app-nav" id="appNav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span style="color: var(--neon-lime);">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link ">Home</a>
+                <a href="events.html" class="nav-link ">Events & Venues</a>
+                <a href="squads.html" class="nav-link ">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link ">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link ">Coordination Chat</a>
+                <a href="pass.html" class="nav-link active">Active Pass</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="squads.html" class="btn-pixel-primary">
+                    <span>⚡ Browse Squads</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container container" style="max-width: 800px;">
+        <!-- Page Header -->
+        <div class="page-header-box" style="text-align: center; margin-bottom: 24px;">
+            <span class="pixel-tag tag-neon-lime">MUTUAL CONSENT COMPANION PASS</span>
+            <h1 class="page-main-title">Verified Entrance <span class="highlight-lime">Digital Pass</span></h1>
+            <p class="page-sub-title">
+                Present this joint pass upon arrival at the designated public landmark. Both companions must be physically present.
+            </p>
+        </div>
+
+        <!-- Digital Pass Card -->
+        <div class="demo-ticket-card" style="margin: 0 auto 40px; max-width: 620px;">
+            <div class="ticket-hologram-strip"></div>
+            
+            <div class="ticket-body-content">
+                <div class="ticket-top-row">
+                    <div>
+                        <span style="font-family: var(--font-mono); font-size: 8px; color: var(--neon-lime); letter-spacing: 1px;">VERIFIED COMPANION PASS</span>
+                        <h3 id="passVenue">Bastian At The Top</h3>
+                        <p style="font-size: 12px; color: var(--text-muted);" id="passArea">📍 Dadar / Bandra · Saturday Night</p>
+                    </div>
+                    <span class="ticket-verified-stamp">MUTUAL OPT-IN CONFIRMED</span>
+                </div>
+
+                <div class="ticket-pair-grid">
+                    <div class="t-member">
+                        <span style="font-size: 9px; color: var(--text-muted); font-weight: 700;">COMPANION 1</span>
+                        <strong id="passPartner1">Zoya M.</strong>
+                        <small>👑 VIP Regular</small>
+                    </div>
+                    <div style="font-size: 20px; color: var(--neon-lime);">⚡</div>
+                    <div class="t-member text-right">
+                        <span style="font-size: 9px; color: var(--text-muted); font-weight: 700;">COMPANION 2</span>
+                        <strong id="passPartner2">Rohan V.</strong>
+                        <small>⚡ The Hype</small>
+                    </div>
+                </div>
+
+                <div class="ticket-perforations">
+                    <div class="cutout-left"></div>
+                    <div class="perforated-dash-line"></div>
+                    <div class="cutout-right"></div>
+                </div>
+
+                <div class="ticket-qr-zone">
+                    <div class="qr-box-white">
+                        <svg viewBox="0 0 100 100" width="100%" height="100%">
+                            <path fill="#000" d="M10,10 h30 v30 h-30 z M15,15 v20 h20 v-20 z M22,22 h6 v6 h-6 z M60,10 h30 v30 h-30 z M65,15 v20 h20 v-20 z M72,22 h6 v6 h-6 z M10,60 h30 v30 h-30 z M15,65 v20 h20 v-20 z M22,72 h6 v6 h-6 z M45,15 h10 v5 h-10 z M45,25 h5 v10 h-5 z M55,30 h5 v15 h-5 z M45,50 h15 v5 h-15 z M65,50 h10 v10 h-10 z M80,50 h10 v15 h-10 z M45,70 h10 v20 h-10 z M60,70 h20 v5 h-20 z M70,80 h20 v10 h-20 z M60,85 h5 v5 h-5 z"/>
+                        </svg>
+                    </div>
+
+                    <div class="barcode-lines" style="width: 100%; margin: 16px 0;"></div>
+
+                    <p style="font-size: 13px; text-align: center; color: var(--text-silver); line-height: 1.6; margin-bottom: 16px;">
+                        Public Meetup Landmark: <strong id="passLandmark">Ground Floor Valet Lobby</strong> at 10:15 PM.<br>
+                        Show this pass at venue check-in. Admission remains at venue door management's discretion.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button class="btn-confirm-met-btn" id="btnConfirmMet" onclick="confirmArrival()">
+                            <span>✓ Both Arrived at Landmark (Ready to Enter)</span>
+                        </button>
+                        <a href="chat.html?channel=chan-pair-1" class="btn-neo-huge btn-ghost-white btn-full" style="text-align: center; text-decoration: none;">
+                            <span>Coordinate Arrival via Chat 💬</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="chat.html">Coordination Chat</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI ZONES</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        function loadPassDetails() {
+            const pass = JSON.parse(localStorage.getItem(STORAGE_PASS_KEY) || 'null');
+            if (pass) {
+                if (document.getElementById('passVenue')) document.getElementById('passVenue').textContent = pass.venue;
+                if (document.getElementById('passPartner1')) document.getElementById('passPartner1').textContent = pass.partner1;
+                if (document.getElementById('passPartner2')) document.getElementById('passPartner2').textContent = pass.partner2;
+                if (document.getElementById('passLandmark')) document.getElementById('passLandmark').textContent = pass.landmark;
+            }
+        }
+
+        function confirmArrival() {
+            const btn = document.getElementById('btnConfirmMet');
+            if (btn) {
+                btn.style.background = '#00F0FF';
+                btn.style.color = '#000';
+                btn.innerHTML = '<span>✓ VERIFIED OUTSIDE VENUE — ENJOY THE NIGHT! 🥂</span>';
+            }
+            showToast("✓ Arrival confirmed! Approaching venue entrance together.");
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPassDetails();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Mumbai Clubs & Venues (38) | NITE CREW Mumbai</title>
+    <meta name="description" content="Explore verified Mumbai nightlife venues across Bandra, Lower Parel, Juhu, Andheri, and South Mumbai. Real internet ratings, dress codes, music vibes, spend brackets, and designated meetup spots.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20.0">
+</head>
+<body class="dark-theme">
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="main-header" id="appNav">
+        <div class="container header-container">
+            <div class="nav-left">
+                <a href="index.html" class="brand-logo" aria-label="NITE CREW Home">
+                    <img src="assets/logo-icon.png" class="brand-logo-img" alt="NC Logo">
+                    <div class="brand-name">
+                        <span class="brand-text">NITE<span class="highlight-lime">CREW</span></span>
+                        <span class="brand-sub">MUMBAI</span>
+                    </div>
+                </a>
+                <div class="location-pill">
+                    <span class="live-dot" aria-hidden="true"></span>
+                    <span class="city-name">Mumbai · 38 Clubs Live</span>
+                </div>
+            </div>
+
+            <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-center" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link active">Events & Venues</a>
+                <a href="squads.html" class="nav-link">Squads (4–6)</a>
+                <a href="pairmatch.html" class="nav-link">1v1 PairMatch</a>
+                <a href="chat.html" class="nav-link">Coordination Chat</a>
+                <a href="pass.html" class="nav-link">Active Pass</a>
+            </nav>
+
+            <div class="nav-right">
+                <!-- Dynamically populated by common.js with user session/persona -->
+                <a href="squads.html" class="btn-pixel-primary">
+                    <span>⚡ Browse Squads</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container container">
+        <!-- Page Header -->
+        <div class="page-header-box">
+            <span class="pixel-tag tag-neon-lime">CURATED MUMBAI NIGHTLIFE · TOP 38 CLUBS</span>
+            <h1 class="page-main-title">Top Mumbai Clubs & <span class="highlight-lime">Venues</span></h1>
+            <p class="page-sub-title">
+                Explore confirmed spots across Bandra, Lower Parel, Juhu, Andheri, and South Mumbai. Real Google & Zomato ratings, dress codes, music genres, spend brackets, and designated public meetup landmarks.
+            </p>
+
+            <!-- Search and Filter Controls -->
+            <div class="events-controls-row">
+                <input type="text" id="venueSearchInput" class="neo-search-input" placeholder="🔍 Search club name, music genre, or neighborhood..." oninput="filterVenues()">
+                
+                <div class="club-filter-row" style="margin-bottom: 0;">
+                    <button class="filter-pill active" onclick="setZoneFilter('all', this)">All Mumbai (<span id="countAllVenues">38</span>)</button>
+                    <button class="filter-pill" onclick="setZoneFilter('bandra', this)">Bandra & Khar (12)</button>
+                    <button class="filter-pill" onclick="setZoneFilter('lower-parel', this)">Lower Parel & Worli (10)</button>
+                    <button class="filter-pill" onclick="setZoneFilter('juhu-bkc', this)">Juhu & BKC (8)</button>
+                    <button class="filter-pill" onclick="setZoneFilter('andheri', this)">Andheri & Suburbs (5)</button>
+                    <button class="filter-pill" onclick="setZoneFilter('south-mumbai', this)">South Mumbai (3)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Venue Cards Grid -->
+        <div class="clubs-grid" id="venuesGrid">
+            <!-- Dynamically populated by JS from data.js -->
+        </div>
+    </main>
+
+    <!-- VENUE DETAIL MODAL -->
+    <div class="modal-backdrop hidden" id="venueDetailModal">
+        <div class="club-modal-card">
+            <button class="modal-close-btn" onclick="closeVenueModal()">✕</button>
+
+            <div class="club-modal-hero" id="modalVenueHero">
+                <div class="club-modal-head-content">
+                    <span class="pixel-tag tag-neon-lime" style="font-size: 8px; margin-bottom: 4px; display: inline-block;">CONFIRMED VENUE</span>
+                    <h2 id="modalVenueName">Bastian At The Top</h2>
+                    <p id="modalVenueArea">📍 Bandra West · 48th Floor Rooftop Luxury</p>
+                </div>
+            </div>
+
+            <div class="club-modal-body">
+                <p id="modalVenueDesc" style="font-size: 14px; color: var(--text-silver); line-height: 1.6;">
+                    Description
+                </p>
+
+                <div class="club-specs-grid">
+                    <div class="spec-badge-box">
+                        <span>INTERNET RATING</span>
+                        <strong id="modalVenueRating" style="color: #ffd700;">★ 4.6 (2.8k+ reviews)</strong>
+                    </div>
+                    <div class="spec-badge-box">
+                        <span>ESTIMATED SPEND</span>
+                        <strong id="modalVenueSpend" style="color: var(--neon-lime);">₹2,500–₹3,500</strong>
+                    </div>
+                    <div class="spec-badge-box">
+                        <span>MUSIC GENRE</span>
+                        <strong id="modalVenueGenre">Commercial & Hip-Hop</strong>
+                    </div>
+                    <div class="spec-badge-box">
+                        <span>DRESS CODE</span>
+                        <strong id="modalVenueDress">Smart Chic</strong>
+                    </div>
+                </div>
+
+                <div style="background: rgba(204, 255, 0, 0.08); border: 1px solid var(--neon-lime); padding: 12px; border-radius: 8px; font-size: 13px; color: var(--neon-lime); margin-top: 10px;">
+                    📍 Designated Meetup Landmark: <strong id="modalVenueMeetup">Ground Floor Valet Lobby</strong>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 14px;">
+                    <a href="squads.html" class="btn-neo-huge btn-lime btn-full" style="text-align: center; text-decoration: none;">
+                        <span>JOIN A SQUAD ATTENDING THIS VENUE 👥</span>
+                    </a>
+                </div>
+
+                <!-- Similar Venues -->
+                <div class="similar-venues-box" id="modalSimilarVenuesBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-notification hidden" id="toastNotification">
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="assets/logo-icon.png" class="footer-logo-img" alt="NC"> NITE<span>CREW</span></span>
+                <p>Your city is better with your people. Find your crowd. Own your night.</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                    © 2026 NITE CREW Mumbai. Social Discovery & Community.
+                </small>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <strong>PAGES</strong>
+                    <a href="index.html">Home Overview</a>
+                    <a href="events.html">Events & Venues (38)</a>
+                    <a href="squads.html">Event Squads (4–6)</a>
+                    <a href="pairmatch.html">1v1 PairMatch</a>
+                    <a href="admin.html">Admin Operations</a>
+                </div>
+                <div class="footer-col">
+                    <strong>SAFETY & RESPECT</strong>
+                    <a href="index.html#safety-rules">Women-First Review</a>
+                    <a href="index.html#safety-rules">Public Meetups</a>
+                    <a href="index.html#safety-rules">Masked In-App Chat</a>
+                    <a href="pass.html">Demo Verified Pass</a>
+                </div>
+                <div class="footer-col">
+                    <strong>MUMBAI DISTRICTS</strong>
+                    <a href="events.html?zone=bandra">Bandra & Khar</a>
+                    <a href="events.html?zone=lower-parel">Lower Parel & Worli</a>
+                    <a href="events.html?zone=juhu-bkc">Juhu & BKC</a>
+                    <a href="events.html?zone=andheri">Andheri West</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>MADE IN MUMBAI ♥</span>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="common.js?v=8.0"></script>
+    <script>
+        let currentZone = 'all';
+
+        function renderVenues() {
+            const container = document.getElementById('venuesGrid');
+            if (!container) return;
+
+            const query = (document.getElementById('venueSearchInput')?.value || '').toLowerCase().trim();
+
+            const countEl = document.getElementById('countAllVenues');
+            if (countEl) countEl.textContent = MUMBAI_CLUBS.length;
+
+            const filtered = MUMBAI_CLUBS.filter(c => {
+                const zoneMatch = (currentZone === 'all') || (c.zone === currentZone);
+                const queryMatch = !query || 
+                    c.name.toLowerCase().includes(query) || 
+                    c.area.toLowerCase().includes(query) || 
+                    c.genre.toLowerCase().includes(query) || 
+                    c.musicVibe.toLowerCase().includes(query);
+                return zoneMatch && queryMatch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: #0d0d16; border-radius: 20px; border: 1px dashed rgba(255,255,255,0.15);">
+                        <div style="font-size: 40px; margin-bottom: 12px;">🔍</div>
+                        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: #fff;">No venues found</h3>
+                        <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Try searching for "Bandra", "Techno", or "Rooftop"</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(club => `
+                <div class="club-card-brutal" data-club-id="${club.id}">
+                    <div class="club-card-banner" style="background-image: url('${club.photo}');" onclick="openVenueModal(${club.id})">
+                        <div class="banner-top-tags">
+                            <span class="tag-genre">🎵 ${club.genre.split('&')[0]}</span>
+                            <div style="display: flex; gap: 6px; align-items: center;">
+                                <span class="tag-venue-rating">★ ${club.rating || '4.5'} <small>(${club.reviews || '2k+'})</small></span>
+                                <span class="tag-venue-zone">📍 ${club.zone.toUpperCase().replace('-', ' ')}</span>
+                            </div>
+                        </div>
+                        <div class="banner-bottom-info">
+                            <h3 class="club-card-title">${club.name}</h3>
+                            <span class="club-card-area">📍 ${club.area} · ${club.tag}</span>
+                        </div>
+                    </div>
+
+                    <div class="club-card-body">
+                        <p class="club-card-desc">
+                            ${club.description}
+                        </p>
+
+                        <div class="club-card-specs-line">
+                            <span>👔 ${club.dressCode.split('/')[0]}</span>
+                            <span style="color: var(--neon-lime); font-weight: 700;">💰 ${club.avgSpend || '₹1,500–₹2,500'}</span>
+                        </div>
+
+                        <div class="venue-card-actions-grid">
+                            <button class="btn-venue-action-details" onclick="openVenueModal(${club.id})">
+                                <span>VENUE DETAILS</span>
+                                <span>→</span>
+                            </button>
+                            <a href="squads.html" class="btn-venue-action-squads">
+                                <span>FIND SQUADS</span>
+                                <span>👥</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setZoneFilter(zone, btn) {
+            currentZone = zone;
+            document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderVenues();
+        }
+
+        function filterVenues() {
+            renderVenues();
+        }
+
+        function openVenueModal(id) {
+            const club = MUMBAI_CLUBS.find(c => c.id === id);
+            if (!club) return;
+            const modal = document.getElementById('venueDetailModal');
+            if (!modal) return;
+
+            document.getElementById('modalVenueName').textContent = club.name;
+            document.getElementById('modalVenueArea').textContent = `📍 ${club.area} · ${club.tag}`;
+            document.getElementById('modalVenueHero').style.backgroundImage = `url('${club.photo}')`;
+            document.getElementById('modalVenueDesc').textContent = club.description;
+            document.getElementById('modalVenueGenre').textContent = club.genre;
+            document.getElementById('modalVenueDress').textContent = club.dressCode;
+            document.getElementById('modalVenueSpend').textContent = club.avgSpend || '₹1,500–₹2,500';
+            document.getElementById('modalVenueRating').textContent = `★ ${club.rating || '4.5'} (${club.reviews || '2k+ reviews'})`;
+            document.getElementById('modalVenueMeetup').textContent = club.meetupSpot;
+
+            // Similar venues in same zone
+            const similar = MUMBAI_CLUBS.filter(c => c.zone === club.zone && c.id !== club.id).slice(0, 3);
+            const simBox = document.getElementById('modalSimilarVenuesBox');
+            if (simBox) {
+                if (similar.length > 0) {
+                    simBox.innerHTML = `
+                        <div style="margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px;">
+                            <h4 style="font-size: 11px; font-family: var(--font-heading); color: #94a3b8; margin-bottom: 8px;">SIMILAR VENUES IN ${club.zone.toUpperCase().replace('-', ' ')}</h4>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                ${similar.map(s => `
+                                    <button onclick="openVenueModal(${s.id})" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; padding: 6px 14px; color: #fff; font-size: 11px; cursor: pointer;">
+                                        ★ ${s.rating} · ${s.name}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    simBox.innerHTML = '';
+                }
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeVenueModal() {
+            const modal = document.getElementById('venueDetailModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderVenues();
+        });
+    </script>
+</body>
+</html>
